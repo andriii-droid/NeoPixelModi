@@ -11,6 +11,11 @@
     {
     public:
     FrameFade(int initNumLed);
+    //Ctor
+
+    void run();
+    //Runs the FrameFade algorythm to generate PixelColors
+
     private:
         /* data */
     };

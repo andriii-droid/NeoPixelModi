@@ -9,7 +9,7 @@ NeoPixelModi{initNumLed}
 {
 }
 
-void OneFrame::run()
+void OneFrame::run(int red, int green, int blue)
 {
-    setCanvas(getStaticRed(), getStaticBlue(), getStaticGreen());
+    setCanvas(red, green, blue);
 }

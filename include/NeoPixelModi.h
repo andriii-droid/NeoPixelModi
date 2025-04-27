@@ -14,21 +14,17 @@
 
             ~NeoPixelModi();
 
-            static void setColor(int newRed, int newGreen, int newBlue);
+            int getRedVal(int numLed) const {return red[numLed]; }
+            int getGreenVal(int numLed) const {return green[numLed]; }
+            int getBlueVal(int numLed) const {return blue[numLed]; }
 
             int getRed(int numLed) const { return calculateBrightness(red[numLed]); }
-
             int getGreen(int numLed) const { return calculateBrightness(green[numLed]); }
-
             int getBlue(int numLed) const { return calculateBrightness(blue[numLed]); }
 
-            int getStaticRed() const { return StRed; }
-
-            int getStaticGreen() const { return StGreen; }
-
-            int getStaticBlue() const { return StBlue; }
-
             void setCanvas(int newRed, int newGreen, int newBlue);
+
+            static bool calculateSpeed(int amplifier);
 
             static void setSpeed(int newSpeed) 
             { 
@@ -51,13 +47,10 @@
             int* red;
             int* green;
             int* blue;
-            static int StRed;
-            static int StGreen;
-            static int StBlue;
+    
             static int speed;   //Von 0-255 0 = langsam, 255 = schnell
             static int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
-            static bool calculateSpeed(int amplifier);
 
             static int calculateBrightness(int pixel) { return map(pixel, 0, 255, 0, brightness); }
 

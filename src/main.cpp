@@ -7,7 +7,7 @@
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 
-OneFrame PixelMode{numLeds};
+FrameFade PixelMode{numLeds};
 
 void setup() 
 {
@@ -16,7 +16,6 @@ void setup()
   strip.clear();
   PixelMode.setSpeed(20);
   NeoPixelModi::setBrightness(255);
-  NeoPixelModi::setColor(0, 255, 255);
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
@@ -26,7 +25,6 @@ void setup()
 
 void loop() 
 {
-  PixelMode.setColor(100,25,255);
   PixelMode.run();
 
   for (size_t i = 0; i < numLeds; i++)

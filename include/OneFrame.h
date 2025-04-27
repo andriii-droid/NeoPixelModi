@@ -13,7 +13,7 @@
         OneFrame(int initNumLed);
         //Ctor
 
-        void run();
+        void run(int red, int green, int blue);
         //Runs the OneFrame algorythm to generate PixelColors
 
     private:
