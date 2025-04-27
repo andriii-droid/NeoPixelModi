@@ -10,8 +10,8 @@ int NeoPixelModi::StRed = 0;
 int NeoPixelModi::StGreen = 0;
 int NeoPixelModi::StBlue = 0;
 
-NeoPixelModi::NeoPixelModi(modi initModi, int initNumLed) //Ctor
-    :mode{initModi}, numLed{initNumLed}
+NeoPixelModi::NeoPixelModi(int initNumLed) //Ctor
+    : numLed{initNumLed}
 {
     red = new int[numLed];
     green = new int[numLed];
@@ -32,27 +32,6 @@ void NeoPixelModi::setColor(int newRed, int newGreen, int newBlue)
     StRed = newRed;
     StGreen = newGreen;
     StBlue = newBlue;
-}
-
-void NeoPixelModi::calculateFrame()
-{
-    switch (mode)
-    {
-    case oneFrame:
-        
-        setCanvas(StRed, StGreen, StBlue);
-        break;
-    
-    case fade:
-        frameFade();
-
-        break;
-
-    case run:
-        pixelRun();
-
-        break;
-    }
 }
 
 void NeoPixelModi::frameFade()

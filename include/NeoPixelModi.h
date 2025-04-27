@@ -10,7 +10,7 @@
         public:
             enum modi {oneFrame, fade, run};
 
-            explicit NeoPixelModi(modi initMode, int initNumLed);
+            explicit NeoPixelModi(int initNumLed);
 
             ~NeoPixelModi();
 
@@ -41,7 +41,6 @@
             }
 
         private:
-            modi mode;
             int numLed;
             int* red;
             int* green;
