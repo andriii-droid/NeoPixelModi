@@ -14,6 +14,8 @@
 
             ~NeoPixelModi();
 
+            int getNumLed() const { return numLed; }
+
             int getRedVal(int numLed) const {return red[numLed]; }
             int getGreenVal(int numLed) const {return green[numLed]; }
             int getBlueVal(int numLed) const {return blue[numLed]; }
@@ -25,6 +27,8 @@
             void setCanvas(int newRed, int newGreen, int newBlue);
 
             static bool calculateSpeed(int amplifier);
+
+            void setLed(int numLed, int newRed, int newGreen, int newBlue);
 
             static void setSpeed(int newSpeed) 
             { 
@@ -52,14 +56,8 @@
             static int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
 
-            static int calculateBrightness(int pixel) { return map(pixel, 0, 255, 0, brightness); }
-
-            void setLed(int numLed, int newRed, int newGreen, int newBlue)
-            {   
-                red[numLed] = newRed; 
-                green[numLed] = newGreen;
-                blue[numLed] = newBlue;
-            }
+            static int calculateBrightness(int pixel) 
+            { return map(pixel, 0, 255, 0, brightness); }
 
             void frameFade();
 

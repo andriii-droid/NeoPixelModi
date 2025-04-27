@@ -11,6 +11,8 @@
     {
     public:
     PixelRun(int initNumLed);
+
+    void run(int red, int green, int blue);
     private:
         /* data */
     };

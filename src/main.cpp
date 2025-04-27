@@ -7,7 +7,7 @@
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 
-FrameFade PixelMode{numLeds};
+PixelRun PixelMode{numLeds};
 
 void setup() 
 {
@@ -25,7 +25,7 @@ void setup()
 
 void loop() 
 {
-  PixelMode.run();
+  PixelMode.run(100,25,255);
 
   for (size_t i = 0; i < numLeds; i++)
   {

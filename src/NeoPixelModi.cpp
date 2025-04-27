@@ -25,34 +25,6 @@ NeoPixelModi::~NeoPixelModi() //Dtor
     //TODO save current Color config somewhere to initialise the new object with those values
 }
 
-
-
-    
-void NeoPixelModi::pixelRun()
-{
-    // if (calculateSpeed(6))
-    // {
-    //     static int count = 0;
-
-    //     if (count == numLed)
-    //     {
-    //         count = 0;
-    //     }
-
-    //     setLed(count, StRed, StGreen, StBlue);
-
-    //     if (count == 0)
-    //     {
-    //         setLed(numLed - 1, 0, 0, 0);
-    //     } else
-    //     {
-    //         setLed(count - 1, 0, 0, 0);
-    //     }
-    //     ++count;
-    // }
-    
-}
-
 bool NeoPixelModi::calculateSpeed(int amplifier)
 {
     int speedDiv = map(speed, 0, 255, amplifier*100, 1);
@@ -81,6 +53,13 @@ void NeoPixelModi::setCanvas(int newRed, int newGreen, int newBlue)
         setLed(i, newRed, newGreen, newBlue);
     }
     
+}
+
+void NeoPixelModi::setLed(int numLed, int newRed, int newGreen, int newBlue)
+{   
+    red[numLed] = newRed; 
+    green[numLed] = newGreen;
+    blue[numLed] = newBlue;
 }
 
 
