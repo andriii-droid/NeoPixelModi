@@ -131,5 +131,6 @@
  /Users/andri/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/include/esp_hw_support/include/soc/esp32/spiram.h \
  /Users/andri/.platformio/packages/framework-arduinoespressif32/cores/esp32/io_pin_remap.h \
  /Users/andri/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
- include/NeoPixelModi.h \
+ include/OneFrame.h include/NeoPixelModi.h include/FrameFade.h \
+ include/PixelRun.h \
  .pio/libdeps/esp32-s2-saola-1/Adafruit\ NeoPixel/Adafruit_NeoPixel.h

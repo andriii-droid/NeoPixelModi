@@ -14,8 +14,6 @@
 
             ~NeoPixelModi();
 
-            void calculateFrame();
-
             static void setColor(int newRed, int newGreen, int newBlue);
 
             int getRed(int numLed) const { return calculateBrightness(red[numLed]); }
@@ -23,6 +21,14 @@
             int getGreen(int numLed) const { return calculateBrightness(green[numLed]); }
 
             int getBlue(int numLed) const { return calculateBrightness(blue[numLed]); }
+
+            int getStaticRed() const { return StRed; }
+
+            int getStaticGreen() const { return StGreen; }
+
+            int getStaticBlue() const { return StBlue; }
+
+            void setCanvas(int newRed, int newGreen, int newBlue);
 
             static void setSpeed(int newSpeed) 
             { 
@@ -61,8 +67,6 @@
                 green[numLed] = newGreen;
                 blue[numLed] = newBlue;
             }
-
-            void setCanvas(int newRed, int newGreen, int newBlue);
 
             void frameFade();
 

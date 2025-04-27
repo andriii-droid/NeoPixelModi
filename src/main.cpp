@@ -1,11 +1,13 @@
 #include <Arduino.h>
-#include <NeoPixelModi.h>
+#include <OneFrame.h>
+#include <FrameFade.h>
+#include <PixelRun.h>
 #include <Adafruit_NeoPixel.h>
 
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 
-NeoPixelModi PixelMode{numLeds};
+OneFrame PixelMode{numLeds};
 
 void setup() 
 {
@@ -24,7 +26,8 @@ void setup()
 
 void loop() 
 {
-
+  PixelMode.setColor(100,25,255);
+  PixelMode.run();
 
   for (size_t i = 0; i < numLeds; i++)
   {

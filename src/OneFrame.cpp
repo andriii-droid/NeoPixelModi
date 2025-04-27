@@ -8,3 +8,8 @@ OneFrame::OneFrame(int initNumLed) :
 NeoPixelModi{initNumLed}
 {
 }
+
+void OneFrame::run()
+{
+    setCanvas(getStaticRed(), getStaticBlue(), getStaticGreen());
+}

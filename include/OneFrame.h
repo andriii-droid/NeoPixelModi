@@ -11,6 +11,11 @@
     {
     public:
         OneFrame(int initNumLed);
+        //Ctor
+
+        void run();
+        //Runs the OneFrame algorythm to generate PixelColors
+
     private:
         /* data */
     };
