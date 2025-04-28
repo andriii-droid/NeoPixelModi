@@ -8,27 +8,32 @@
     class NeoPixelModi
     {
         public:
-            enum modi {oneFrame, fade, run};
-
             explicit NeoPixelModi(int initNumLed);
+            //Constructor: Creates Color Arrays, depending on Number of Leds
 
             ~NeoPixelModi();
+            //Desturctor: Destroys Color Arrays
 
+            //getters
             int getNumLed() const { return numLed; }
 
             int getRedVal(int numLed) const {return red[numLed]; }
             int getGreenVal(int numLed) const {return green[numLed]; }
             int getBlueVal(int numLed) const {return blue[numLed]; }
 
+            //getters to Read Color for Strip
             int getRed(int numLed) const { return calculateBrightness(red[numLed]); }
             int getGreen(int numLed) const { return calculateBrightness(green[numLed]); }
             int getBlue(int numLed) const { return calculateBrightness(blue[numLed]); }
 
-            void setCanvas(int newRed, int newGreen, int newBlue);
-
             static bool calculateSpeed(int amplifier);
+            //Calculates the Speed a Mode Class is run
+
+            void setCanvas(int newRed, int newGreen, int newBlue);
+            //Sets the all Leds to the specified Color
 
             void setLed(int numLed, int newRed, int newGreen, int newBlue);
+            //Sets the specified Led to the specified Color
 
             static void setSpeed(int newSpeed) 
             { 
@@ -37,6 +42,7 @@
                     speed = newSpeed; 
                 }
             }
+            //Sets the New specified Speed
 
             static void setBrightness(int newBrightness)
             { 
@@ -45,24 +51,21 @@
                     brightness = newBrightness; 
                 }
             }
+            //Sets the New specified Brightness
+
 
         private:
-            int numLed;
-            int* red;
-            int* green;
-            int* blue;
+            int numLed; //Number of Leds
+            int* red; //red Array
+            int* green; //green Array
+            int* blue; //blue Array
     
             static int speed;   //Von 0-255 0 = langsam, 255 = schnell
             static int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
-
             static int calculateBrightness(int pixel) 
             { return map(pixel, 0, 255, 0, brightness); }
-
-            void frameFade();
-
-            void pixelRun();
-
+            //Calculates the Brightness
     };
 
 
