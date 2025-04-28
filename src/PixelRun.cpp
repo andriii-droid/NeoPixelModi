@@ -9,7 +9,7 @@ NeoPixelModi{initNumLed}
 {
 }
 
-void PixelRun::run(int red, int green, int blue)
+void PixelRun::run()
 {
     if (calculateSpeed(6))
     {
@@ -20,7 +20,7 @@ void PixelRun::run(int red, int green, int blue)
             count = 0;
         }
 
-        setLed(count, red, green, blue);
+        setLed(count, getRedChange(), getGreenChange(), getBlueChange());
 
         if (count == 0)
         {

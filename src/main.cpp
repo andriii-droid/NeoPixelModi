@@ -29,7 +29,7 @@ void loop()
 
   for (size_t i = 0; i < numLeds; i++)
   {
-    strip.setPixelColor(i, strip.Color(Run.getRed(i), Run.getGreen(i), Run.getBlue(i)));
+    strip.setPixelColor(i, strip.Color(Run.getR(i), Run.getG(i), Run.getB(i)));
   }
 
   strip.show();

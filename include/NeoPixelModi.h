@@ -17,14 +17,23 @@
             //getters
             int getNumLed() const { return numLed; }
 
-            int getRedVal(int numLed) const {return red[numLed]; }
-            int getGreenVal(int numLed) const {return green[numLed]; }
-            int getBlueVal(int numLed) const {return blue[numLed]; }
+            int getRed(int numLed) const {return red[numLed]; }
+            int getGreen(int numLed) const {return green[numLed]; }
+            int getBlue(int numLed) const {return blue[numLed]; }
+
+            //getters / setters for change Colors
+            int getRedChange() const {return redChange; }
+            int getGreenChange() const {return greenChange; }
+            int getBlueChange() const {return blueChange; }
+
+            int setRedChange(int newRed) {redChange = newRed; }
+            int setGreenChange(int newGreen) {greenChange = newGreen; }
+            int setBlueChange(int newBlue) {blueChange = newBlue; }
 
             //getters to Read Color for Strip
-            int getRed(int numLed) const { return calculateBrightness(red[numLed]); }
-            int getGreen(int numLed) const { return calculateBrightness(green[numLed]); }
-            int getBlue(int numLed) const { return calculateBrightness(blue[numLed]); }
+            int getR(int numLed) const { return calculateBrightness(red[numLed]); }
+            int getG(int numLed) const { return calculateBrightness(green[numLed]); }
+            int getB(int numLed) const { return calculateBrightness(blue[numLed]); }
 
             static bool calculateSpeed(int amplifier);
             //Calculates the Speed a Mode Class is run
@@ -59,6 +68,10 @@
             int* red; //red Array
             int* green; //green Array
             int* blue; //blue Array
+
+            int redChange;
+            int greenChange;
+            int blueChange;
     
             static int speed;   //Von 0-255 0 = langsam, 255 = schnell
             static int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell

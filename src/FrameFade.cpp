@@ -21,48 +21,51 @@ void FrameFade::run()
         switch (state)
         {
         case init:
-            setCanvas(count, getGreenVal(0), getBlueVal(0));
+            setCanvas(count, getGreen(0), getBlue(0));
             if (count == 255) { state = greenPlus; }
 
             break;
     
         case redPlus:
-            setCanvas(count, getGreenVal(0), getBlueVal(0));
+            setCanvas(count, getGreen(0), getBlue(0));
             if (count == 255) { state = blueMinus; }
     
             break;
     
         case blueMinus:
-            setCanvas(getRedVal(0), getGreenVal(0), 255 - count);
+            setCanvas(getRed(0), getGreen(0), 255 - count);
             if (count == 255) { state = greenPlus; }
     
             break;
     
         case greenPlus:
-            setCanvas(getRedVal(0), count, getBlueVal(0));
+            setCanvas(getRed(0), count, getBlue(0));
             if (count == 255) { state = redMinus; }
     
             break;
     
         case redMinus:
-            setCanvas(255 - count, getGreenVal(0), getBlueVal(0));
+            setCanvas(255 - count, getGreen(0), getBlue(0));
             if (count == 255) { state = bluePlus; }
     
             break;
     
         case bluePlus:
-            setCanvas(getRedVal(0), getGreenVal(0), count);
+            setCanvas(getRed(0), getGreen(0), count);
             if (count == 255) { state = greenMinus; }
     
             break;
     
         case greenMinus:
-            setCanvas(getRedVal(0), 255 -count, getBlueVal(0));
+            setCanvas(getRed(0), 255 -count, getBlue(0));
             if (count == 255) { state = redPlus; }
     
             break;
         }
         ++count;
+        setRedChange(getRed(0));
+        setGreenChange(getGreen(0));
+        setBlueChange(getBlue(0));
     }
     
     if (count == 256) { count = 0; }
