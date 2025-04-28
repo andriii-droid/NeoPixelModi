@@ -53,6 +53,9 @@
             }
             //Sets the New specified Speed
 
+            int getSpeed() const { return speed; }
+            //Returns the Speed
+
             void setBrightness(int newBrightness)
             { 
                 if (newBrightness > 0 && newBrightness <= 255)
@@ -61,6 +64,9 @@
                 }
             }
             //Sets the New specified Brightness
+
+            int getBrightness() const { return brightness; }
+            //Returns the Brightness
 
 
         private:

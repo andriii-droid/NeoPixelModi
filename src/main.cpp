@@ -8,6 +8,7 @@ constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 
 PixelRun Run{numLeds};
+OneFrame Frame{numLeds};
 
 void setup() 
 {
