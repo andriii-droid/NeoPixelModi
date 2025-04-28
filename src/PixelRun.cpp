@@ -20,7 +20,7 @@ void PixelRun::run()
             count = 0;
         }
 
-        setLed(count, getRedChange(), getGreenChange(), getBlueChange());
+        setLed(count, red, green, blue);
 
         if (count == 0)
         {
@@ -31,4 +31,11 @@ void PixelRun::run()
         }
         ++count;
     }
+}
+
+void PixelRun::setColor(int newRed, int newGreen, int newBlue)
+{
+    red = newRed;
+    green = newGreen;
+    blue = newBlue;
 }

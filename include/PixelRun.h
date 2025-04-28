@@ -12,8 +12,14 @@
     public:
     PixelRun(int initNumLed);
 
-    void run();
+    void run() override;
+
+    void setColor(int newRed, int newGreen, int newBlue) override;
+    //Sets the Color
+    
     private:
-        /* data */
+        int red;
+        int green;
+        int blue;
     };
 #endif //PIXELRUN_H_

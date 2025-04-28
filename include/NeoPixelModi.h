@@ -21,15 +21,6 @@
             int getGreen(int numLed) const {return green[numLed]; }
             int getBlue(int numLed) const {return blue[numLed]; }
 
-            //getters / setters for change Colors
-            int getRedChange() const {return redChange; }
-            int getGreenChange() const {return greenChange; }
-            int getBlueChange() const {return blueChange; }
-
-            void setRedChange(int newRed) {redChange = newRed; }
-            void setGreenChange(int newGreen) {greenChange = newGreen; }
-            void setBlueChange(int newBlue) {blueChange = newBlue; }
-
             //getters to Read Color for Strip
             int getR(int numLed)  { return calculateBrightness(red[numLed]); }
             int getG(int numLed)  { return calculateBrightness(green[numLed]); }
@@ -68,16 +59,17 @@
             int getBrightness() const { return brightness; }
             //Returns the Brightness
 
+            virtual void run() = 0;
+            //Runs Algorythm in Subclass
+
+            virtual void setColor(int newRed, int newGreen, int newBlue) = 0;
+            //Sets Color in Subclass
 
         private:
             int numLed; //Number of Leds
             int* red; //red Array
             int* green; //green Array
             int* blue; //blue Array
-
-            int redChange;
-            int greenChange;
-            int blueChange;
     
             int speed;   //Von 0-255 0 = langsam, 255 = schnell
             int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell

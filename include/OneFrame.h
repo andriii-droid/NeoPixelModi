@@ -13,10 +13,15 @@
         OneFrame(int initNumLed);
         //Ctor
 
-        void run();
+        void run() override;
         //Runs the OneFrame algorythm to generate PixelColors
 
+        void setColor(int newRed, int newGreen, int newBlue) override;
+        //Sets the Color
+
     private:
-        /* data */
+        int red;
+        int green;
+        int blue;
     };
 #endif //ONEFRAME_H_

@@ -63,10 +63,14 @@ void FrameFade::run()
             break;
         }
         ++count;
-        setRedChange(getRed(0));
-        setGreenChange(getGreen(0));
-        setBlueChange(getBlue(0));
     }
     
     if (count == 256) { count = 0; }
+}
+
+void FrameFade::setColor(int newRed, int newGreen, int newBlue)
+{
+    red = newRed;
+    green = newGreen;
+    blue = newBlue;
 }

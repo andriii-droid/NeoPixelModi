@@ -11,5 +11,12 @@ NeoPixelModi{initNumLed}
 
 void OneFrame::run()
 {
-    setCanvas(getRedChange(), getGreenChange(), getBlueChange());
+    setCanvas(red, green, blue);
+}
+
+void OneFrame::setColor(int newRed, int newGreen, int newBlue)
+{
+    red = newRed;
+    green = newGreen;
+    blue = newBlue;
 }
