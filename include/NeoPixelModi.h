@@ -26,9 +26,9 @@
             int getGreenChange() const {return greenChange; }
             int getBlueChange() const {return blueChange; }
 
-            int setRedChange(int newRed) {redChange = newRed; }
-            int setGreenChange(int newGreen) {greenChange = newGreen; }
-            int setBlueChange(int newBlue) {blueChange = newBlue; }
+            void setRedChange(int newRed) {redChange = newRed; }
+            void setGreenChange(int newGreen) {greenChange = newGreen; }
+            void setBlueChange(int newBlue) {blueChange = newBlue; }
 
             //getters to Read Color for Strip
             int getR(int numLed)  { return calculateBrightness(red[numLed]); }
