@@ -14,8 +14,7 @@ void setup()
   Serial.begin(9600);
   strip.begin();
   strip.clear();
-  NeoPixelModi::setSpeed(20);
-  NeoPixelModi::setBrightness(255);
+
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
@@ -25,7 +24,7 @@ void setup()
 
 void loop() 
 {
-  Run.run(100,25,255);
+  Run.run();
 
   for (size_t i = 0; i < numLeds; i++)
   {

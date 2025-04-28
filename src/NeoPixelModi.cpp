@@ -4,9 +4,6 @@
 #include <Arduino.h>
 #include <NeoPixelModi.h>
 
-int NeoPixelModi::speed = 255;
-int NeoPixelModi::brightness = 0;
-
 NeoPixelModi::NeoPixelModi(int initNumLed) //Ctor
     : numLed{initNumLed}
 {

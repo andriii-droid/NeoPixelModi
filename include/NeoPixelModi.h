@@ -31,11 +31,11 @@
             int setBlueChange(int newBlue) {blueChange = newBlue; }
 
             //getters to Read Color for Strip
-            int getR(int numLed) const { return calculateBrightness(red[numLed]); }
-            int getG(int numLed) const { return calculateBrightness(green[numLed]); }
-            int getB(int numLed) const { return calculateBrightness(blue[numLed]); }
+            int getR(int numLed)  { return calculateBrightness(red[numLed]); }
+            int getG(int numLed)  { return calculateBrightness(green[numLed]); }
+            int getB(int numLed)  { return calculateBrightness(blue[numLed]); }
 
-            static bool calculateSpeed(int amplifier);
+            bool calculateSpeed(int amplifier);
             //Calculates the Speed a Mode Class is run
 
             void setCanvas(int newRed, int newGreen, int newBlue);
@@ -44,7 +44,7 @@
             void setLed(int numLed, int newRed, int newGreen, int newBlue);
             //Sets the specified Led to the specified Color
 
-            static void setSpeed(int newSpeed) 
+            void setSpeed(int newSpeed) 
             { 
                 if (newSpeed > 0 && newSpeed <= 255)
                 {
@@ -53,7 +53,7 @@
             }
             //Sets the New specified Speed
 
-            static void setBrightness(int newBrightness)
+            void setBrightness(int newBrightness)
             { 
                 if (newBrightness > 0 && newBrightness <= 255)
                 {
@@ -73,10 +73,10 @@
             int greenChange;
             int blueChange;
     
-            static int speed;   //Von 0-255 0 = langsam, 255 = schnell
-            static int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell
+            int speed;   //Von 0-255 0 = langsam, 255 = schnell
+            int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
-            static int calculateBrightness(int pixel) 
+            int calculateBrightness(int pixel) 
             { return map(pixel, 0, 255, 0, brightness); }
             //Calculates the Brightness
     };
