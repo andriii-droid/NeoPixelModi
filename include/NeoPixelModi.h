@@ -71,8 +71,8 @@
             int* green; //green Array
             int* blue; //blue Array
     
-            int speed;   //Von 0-255 0 = langsam, 255 = schnell
-            int brightness;  //Von 0-255 0 = dunkel(aus), 255 = hell
+            int speed = 255;   //Von 0-255 0 = langsam, 255 = schnell
+            int brightness = 255;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
             int calculateBrightness(int pixel) 
             { return map(pixel, 0, 255, 0, brightness); }
