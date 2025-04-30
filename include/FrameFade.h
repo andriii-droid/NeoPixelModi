@@ -21,7 +21,7 @@
 
     private:
         enum fadeState {determine, init, redPlus, greenPlus, bluePlus, redMinus, greenMinus, blueMinus};
-        fadeState state = init;
+        fadeState state = determine;
 
         int red = 0;
         int green = 0;

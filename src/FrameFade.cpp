@@ -35,7 +35,10 @@ void FrameFade::run()
             {
                 state = init;
             }
-        
+
+            setLed(0, red, green, blue);
+            count = 0;
+
             break;
 
         case init:  //TODO decide how to count up, and where to start the fading(state)
@@ -88,16 +91,15 @@ void FrameFade::run()
 
 void FrameFade::setColor(int newRed, int newGreen, int newBlue)
 {
-    if (((newRed || newGreen || newBlue) == 255) && 
-        ((newRed || newGreen || newBlue) == 0))
+    if (!((newRed == 255 || newGreen == 255 || newBlue == 255) && 
+        (newRed == 0 || newGreen == 0 || newBlue == 0)))
     {
-        red = newRed;
-        green = newGreen;
-        blue = newBlue;   
-    } else
-    {
-        correctValues(red, green, blue);
+        correctValues(newRed, newGreen, newBlue);
     }
+
+    red = newRed;
+    green = newGreen;
+    blue = newBlue; 
 
     state = determine;
 }

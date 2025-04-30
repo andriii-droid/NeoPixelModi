@@ -9,8 +9,8 @@ constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 int constexpr maxModi = 3;
 
-int modi = 0;
-int modiLast = 0;
+int modi = 1;
+int modiLast = 1;
 NeoPixelModi* Mode[maxModi];
 
 Button b1{15};
