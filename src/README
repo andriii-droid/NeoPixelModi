@@ -4,8 +4,8 @@ Colors in Subclasses persistent??
 Write/Read Colors, Brightness and Speed to/from a file
 
 FrameFade.cpp
-Init from given Color via setColor()
-Modify setColor() so it only accepts 255, 0, x Format
+Init from given Color via setColor() - done
+Modify setColor() so it only accepts 255, 0, x Format - done
 
 transfer Brightness and Speed when Modi changes in main.cpp
 
