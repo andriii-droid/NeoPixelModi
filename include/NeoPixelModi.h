@@ -59,6 +59,9 @@
             int getBrightness() const { return brightness; }
             //Returns the Brightness
 
+            int getNumModi() const { return numModi; }
+            //Returns Number of Modis
+
             virtual void run() = 0;
             //Runs Algorythm in Subclass
 
@@ -73,6 +76,8 @@
     
             int speed = 255;   //Von 0-255 0 = langsam, 255 = schnell
             int brightness = 255;  //Von 0-255 0 = dunkel(aus), 255 = hell
+
+            int numModi = 3; //Number of available NeopixelModis
 
             int calculateBrightness(int pixel) 
             { return map(pixel, 0, 255, 0, brightness); }

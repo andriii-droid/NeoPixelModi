@@ -1,11 +1,12 @@
 TODO
 
 Colors in Subclasses persistent??
+Write/Read Colors, Brightness and Speed to/from a file
 
 FrameFade.cpp
 Init from given Color via setColor()
 
-Move Class to transfer Brightness and Speed
+transfer Brightness and Speed when Modi changes in main.cpp
 
 Variable with number of diffrent modis
 
