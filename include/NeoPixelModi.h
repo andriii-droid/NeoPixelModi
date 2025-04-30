@@ -11,7 +11,7 @@
             explicit NeoPixelModi(int initNumLed);
             //Constructor: Creates Color Arrays, depending on Number of Leds
 
-            ~NeoPixelModi();
+            virtual ~NeoPixelModi();
             //Desturctor: Destroys Color Arrays
 
             //getters
