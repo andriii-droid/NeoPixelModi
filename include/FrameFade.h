@@ -20,8 +20,14 @@
     //Sets the Color
 
     private:
+        enum fadeState {init, redPlus, greenPlus, bluePlus, redMinus, greenMinus, blueMinus};
+        fadeState state = init;
+
         int red = 0;
         int green = 0;
         int blue = 255;
+
+        void correctValues(int a, int b, int c);
+        //Sets the lowest Value to 0, the highest to 255
     };
 #endif //FRAMEFADE_H_

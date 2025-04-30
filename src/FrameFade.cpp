@@ -12,16 +12,14 @@ NeoPixelModi{initNumLed}
 
 void FrameFade::run()
 {  
-    static int count = 0;
-    enum fadeState {init, redPlus, greenPlus, bluePlus, redMinus, greenMinus, blueMinus};
-    static fadeState state = init;
+    static int count = 0;  
     
     if (calculateSpeed(1))
     {
         switch (state)
         {
-        case init:
-            setCanvas(count, getGreen(0), getBlue(0));
+        case init:  //TODO decide how to count up, and where to start the fading(state)
+            setCanvas(red, green, blue);
             if (count == 255) { state = greenPlus; }
 
             break;
@@ -70,7 +68,21 @@ void FrameFade::run()
 
 void FrameFade::setColor(int newRed, int newGreen, int newBlue)
 {
-    red = newRed;
-    green = newGreen;
-    blue = newBlue;
+    if (((newRed || newGreen || newBlue) == 255) && 
+        ((newRed || newGreen || newBlue) == 0))
+    {
+        red = newRed;
+        green = newGreen;
+        blue = newBlue;   
+    } else
+    {
+        correctValues(red, green, blue);
+    }
+
+    state = init;
+}
+
+void FrameFade::correctValues(int a, int b, int c) //TODO
+{
+
 }
