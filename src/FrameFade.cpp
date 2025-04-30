@@ -102,7 +102,7 @@ void FrameFade::setColor(int newRed, int newGreen, int newBlue)
     state = determine;
 }
 
-void correctValues(int& wRed, int& wGreen, int& wBlue) {
+void FrameFade::correctValues(int& wRed, int& wGreen, int& wBlue) {
     // Find and set the smallest
     if (wRed <= wGreen && wRed <= wBlue) { wRed = 0; }
     else if (wGreen <= wRed && wGreen <= wBlue) { wGreen = 0; }

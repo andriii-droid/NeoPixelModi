@@ -7,7 +7,7 @@ FrameFade.cpp
 Init from given Color via setColor() - done
 Modify setColor() so it only accepts 255, 0, x Format - done
 
-transfer Brightness and Speed when Modi changes in main.cpp
+transfer Brightness and Speed when Modi changes in main.cpp - done
 
 Variable with number of diffrent modis - done
 

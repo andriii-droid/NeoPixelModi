@@ -13,7 +13,7 @@ int modi = 0;
 int modiLast = 0;
 NeoPixelModi* Mode[maxModi];
 
-Button b1;
+Button b1{15};
 
 void setup() 
 {
