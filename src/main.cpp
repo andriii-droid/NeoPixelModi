@@ -1,20 +1,31 @@
 #include <Arduino.h>
-#include <NeoPixelModi.h>
+#include <OneFrame.h>
+#include <FrameFade.h>
+#include <PixelRun.h>
+#include <Button.h>
 #include <Adafruit_NeoPixel.h>
 
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
+int constexpr maxModi = 3;
 
-NeoPixelModi PixelMode {PixelMode.fade, numLeds};
+int modi = 1;
+int modiLast = 1;
+NeoPixelModi* Mode[maxModi];
+
+Button b1{15};
 
 void setup() 
 {
   Serial.begin(9600);
   strip.begin();
   strip.clear();
-  PixelMode.setSpeed(20);
-  NeoPixelModi::setBrightness(255);
-  NeoPixelModi::setColor(0, 255, 255);
+
+  Mode[0] = new OneFrame{5};
+  Mode[1] = new FrameFade{5};
+  Mode[2] = new PixelRun{5};
+
+  Mode[modi]->setSpeed(5);
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
@@ -24,20 +35,37 @@ void setup()
 
 void loop() 
 {
-  PixelMode.calculateFrame();
+  b1.updateButton();
+
+  if (b1.getState(b1.time))
+  {
+    Mode[modi]->setColor(rand() % 256, rand() % 256, rand() % 256);
+  }
+  
+
+ if (b1.getState(b1.click))
+ {
+    ++modi;
+    if (modi == maxModi)
+    {
+      modi = 0;
+    }
+ }
+
+ if (modi != modiLast)
+ {
+    Mode[modi]->setBrightness(Mode[modiLast]->getBrightness());
+    Mode[modi]->setSpeed(Mode[modiLast]->getSpeed());
+
+    modiLast = modi;
+ }
+ 
+  Mode[modi]->run();
 
   for (size_t i = 0; i < numLeds; i++)
   {
-    strip.setPixelColor(i, strip.Color(PixelMode.getRed(i), PixelMode.getGreen(i), PixelMode.getBlue(i)));
+    strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
   }
-
-  // Serial.print("Red: ");
-  // Serial.println(PixelMode.getRed(0));
-  // Serial.print("Green: ");
-  // Serial.println(PixelMode.getGreen(0));
-  // Serial.print("Blue: ");
-  // Serial.println(PixelMode.getBlue(0));
-
 
   strip.show();
 }
