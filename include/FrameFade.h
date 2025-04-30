@@ -20,12 +20,12 @@
     //Sets the Color
 
     private:
-        enum fadeState {init, redPlus, greenPlus, bluePlus, redMinus, greenMinus, blueMinus};
+        enum fadeState {determine, init, redPlus, greenPlus, bluePlus, redMinus, greenMinus, blueMinus};
         fadeState state = init;
 
         int red = 0;
         int green = 0;
-        int blue = 255;
+        int blue = 0;
 
         void correctValues(int& wRed, int& wGreen, int& wBlue);
             //Sets the lowest Value to 0, the highest to 255

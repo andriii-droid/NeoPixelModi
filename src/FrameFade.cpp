@@ -18,8 +18,28 @@ void FrameFade::run()
     {
         switch (state)
         {
+        case determine:
+            if (red == 255)
+            {
+                if (green == 0) { state = blueMinus; }
+                else { state = greenPlus; }
+            } else if (green == 255)
+            {
+                if (blue == 0) { state = redMinus; }
+                else { state = bluePlus; }            
+            } else if (blue == 255)
+            {
+                if (red == 0) { state = greenMinus; }
+                else { state = redPlus; }            
+            } else
+            {
+                state = init;
+            }
+        
+            break;
+
         case init:  //TODO decide how to count up, and where to start the fading(state)
-            setCanvas(red, green, blue);
+            setCanvas(count, getGreen(0), getBlue(0));
             if (count == 255) { state = greenPlus; }
 
             break;
@@ -79,7 +99,7 @@ void FrameFade::setColor(int newRed, int newGreen, int newBlue)
         correctValues(red, green, blue);
     }
 
-    state = init;
+    state = determine;
 }
 
 void correctValues(int& wRed, int& wGreen, int& wBlue) {
