@@ -27,7 +27,7 @@
         int green = 0;
         int blue = 255;
 
-        void correctValues(int a, int b, int c);
-        //Sets the lowest Value to 0, the highest to 255
+        void correctValues(int& wRed, int& wGreen, int& wBlue);
+            //Sets the lowest Value to 0, the highest to 255
     };
 #endif //FRAMEFADE_H_
