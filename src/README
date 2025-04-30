@@ -5,8 +5,13 @@ Write/Read Colors, Brightness and Speed to/from a file
 
 FrameFade.cpp
 Init from given Color via setColor()
+Modify setColor() so it only accepts 255, 0, x Format
 
 transfer Brightness and Speed when Modi changes in main.cpp
 
-Variable with number of diffrent modis
+Variable with number of diffrent modis - done
+
+Modi ContinentFade
+Array with continentleds in ctor
+Many FrameFades with diffrrent starting positions
 
