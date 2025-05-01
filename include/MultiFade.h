@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <FrameFade.h>
 #include <NeoPixelModi.h>
+#include <vector>
 
 
 
@@ -12,7 +13,7 @@
     class MultiFade : public FrameFade
     {
         public:
-        MultiFade(int initNumLed, int* (&initGroups), int initNumGroups);
+        MultiFade(int initNumLed, const std::vector<int>& initGroups);
         //Ctor
 
         void run() override;
@@ -22,9 +23,8 @@
         //Sets the Color
 
         private:
-        NeoPixelModi** SingleFades;
+        FrameFade** SingleFades;
 
-        int* &groups;
-        int numGroups;
+        std::vector<int> groups;
     };
 #endif //MULTIFADE_H_

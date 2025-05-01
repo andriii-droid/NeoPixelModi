@@ -2,15 +2,19 @@
 #include <OneFrame.h>
 #include <FrameFade.h>
 #include <PixelRun.h>
+#include <MultiFade.h>
 #include <Button.h>
 #include <Adafruit_NeoPixel.h>
+#include <vector>
 
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
-int constexpr maxModi = 3;
+int constexpr maxModi = 4;
+std::vector<int> cont = {2};
 
-int modi = 1;
-int modiLast = 1;
+
+int modi = 0;
+int modiLast = 0;
 NeoPixelModi* Mode[maxModi];
 
 Button b1{15};
@@ -24,6 +28,9 @@ void setup()
   Mode[0] = new OneFrame{5};
   Mode[1] = new FrameFade{5};
   Mode[2] = new PixelRun{5};
+  Mode[3] = new MultiFade{5, cont};
+
+
 
   Mode[modi]->setSpeed(5);
 
