@@ -9,6 +9,23 @@
 #define MULTIFADE_H_
     class MultiFade : public FrameFade
     {
+        public:
+        MultiFade(int initNumLed, int& initGroups, int initNumGroups);
+        //Ctor
+
+        void run() override;
+        //Runs the FrameFade algorythm to generate PixelColors
+
+        void setColor(int newRed, int newGreen, int newBlue) override;
+        //Sets the Color
+
+        private:
+        FrameFade* SingleFades;
+
+        int& groups;
+        int numGroups;
+
+
 
     };
 #endif //MULTIFADE_H_

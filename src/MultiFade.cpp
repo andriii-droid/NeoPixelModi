@@ -4,3 +4,7 @@
 #include <Arduino.h>
 #include <MultiFade.h>
 
+MultiFade::MultiFade(int initNumLed, int& initGroups, int initNumGroups)
+    :FrameFade{initNumLed}, groups{initGroups}, numGroups{initNumGroups}
+{
+}

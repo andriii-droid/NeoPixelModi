@@ -14,4 +14,6 @@ Variable with number of diffrent modis - done
 Modi ContinentFade
 Array with continentleds in ctor
 Many FrameFades with diffrrent starting positions
+Brightness and Speed are still global for the whole object and 
+just scale the differences of the different local parameters of the diffrent Groups
 

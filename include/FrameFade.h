@@ -13,6 +13,8 @@
     FrameFade(int initNumLed);
     //Ctor
 
+    virtual ~FrameFade() {}
+
     void run() override;
     //Runs the FrameFade algorythm to generate PixelColors
 
