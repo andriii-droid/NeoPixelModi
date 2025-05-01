@@ -29,3 +29,25 @@ MultiFade::MultiFade(int initNumLed, int* (&initGroups), int initNumGroups)
         SingleFades[j] = new FrameFade{groups[j]};
     }
 }
+
+void MultiFade::run()
+{
+    int done = 0;
+
+    for (size_t i = 0; i < numGroups; i++)
+    {
+        SingleFades[i]->run();
+
+        for (size_t j = done; j < done + groups[i]; j++)
+        {
+            setLed(j, SingleFades[i]->getRed(0), SingleFades[i]->getGreen(0), SingleFades[i]->getBlue(0));
+        }
+
+        done = groups[i];
+    }
+}
+
+void MultiFade::setColor(int newRed, int newGreen, int newBlue)
+{
+    
+}

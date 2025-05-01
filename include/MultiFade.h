@@ -26,8 +26,5 @@
 
         int* &groups;
         int numGroups;
-
-
-
     };
 #endif //MULTIFADE_H_
