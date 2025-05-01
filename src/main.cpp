@@ -10,7 +10,7 @@
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 int constexpr maxModi = 4;
-std::vector<int> cont = {2};
+std::vector<int> cont = {2, 3};
 
 
 int modi = 0;

@@ -34,6 +34,16 @@ MultiFade::MultiFade(int initNumLed, const std::vector<int>& initGroups)
     }
 }
 
+MultiFade::~MultiFade()
+{
+    if (SingleFades != nullptr) {
+        for (size_t i = 0; i < groups.size(); ++i) {
+            delete SingleFades[i]; // delete each FrameFade object
+        }
+        delete[] SingleFades; // delete the array of pointers
+    }
+}
+
 void MultiFade::run()
 {
     int done = 0;
@@ -47,7 +57,14 @@ void MultiFade::run()
             setLed(j, SingleFades[i]->getRed(0), SingleFades[i]->getGreen(0), SingleFades[i]->getBlue(0));
         }
 
-        done = groups[i];
+        done += groups[i];
+
+        // Serial.print("red: ");
+        // Serial.println(SingleFades[i]->getRed(0));
+        // Serial.print("green: ");
+        // Serial.println(SingleFades[i]->getGreen(0));
+        // Serial.print("blue: ");
+        // Serial.println(SingleFades[i]->getBlue(0));
     }
 }
 

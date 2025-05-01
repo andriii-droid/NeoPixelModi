@@ -16,6 +16,9 @@
         MultiFade(int initNumLed, const std::vector<int>& initGroups);
         //Ctor
 
+        ~MultiFade();
+        //Dtor
+
         void run() override;
         //Runs the FrameFade algorythm to generate PixelColors
 

@@ -99,7 +99,7 @@ void FrameFade::setColor(int newRed, int newGreen, int newBlue)
 
     red = newRed;
     green = newGreen;
-    blue = newBlue; 
+    blue = newBlue;     
 
     state = determine;
 }
