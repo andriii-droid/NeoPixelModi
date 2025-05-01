@@ -27,6 +27,7 @@ MultiFade::MultiFade(int initNumLed, int* (&initGroups), int initNumGroups)
     for (size_t j = 0; j < numGroups; j++)  //Creates Array with multiple FrameFade Objects, one for each Group
     {
         SingleFades[j] = new FrameFade{groups[j]};
+        SingleFades[j]->setColor(rand() % 256, rand() % 256, rand() % 256);
     }
 }
 
