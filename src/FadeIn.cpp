@@ -19,18 +19,15 @@ void FadeIn::run()
         switch (state)
         {
         case determine:
-            if (red == 255)
+            if (red == 0)
             {
-                if (green == 0) { state = blueMinus; }
-                else { state = greenPlus; }
-            } else if (green == 255)
+              state = greenBluePlus;
+            } else if (green == 0)
             {
-                if (blue == 0) { state = redMinus; }
-                else { state = bluePlus; }            
-            } else if (blue == 255)
+                state = blueRedPlus;           
+            } else if (blue == 0)
             {
-                if (red == 0) { state = greenMinus; }
-                else { state = redPlus; }            
+                state = redGreenPlus;                 
             } 
         
             setLed(0, red, green, blue);
