@@ -81,7 +81,7 @@
             int count = 1;
             int countLast = 0;
 
-            int numModi = 4; //Number of available NeopixelModis
+            int numModi = 5; //Number of available NeopixelModis
 
             int calculateBrightness(int pixel) 
             { return map(pixel, 0, 255, 0, brightness); }

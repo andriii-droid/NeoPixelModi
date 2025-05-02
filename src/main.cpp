@@ -3,13 +3,14 @@
 #include <FrameFade.h>
 #include <PixelRun.h>
 #include <MultiFade.h>
+#include <MultiFrame.h>
 #include <Button.h>
 #include <Adafruit_NeoPixel.h>
 #include <vector>
 
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
-int constexpr maxModi = 4;
+int constexpr maxModi = 5;
 std::vector<int> cont = {1,1,1,1,1};
 
 
@@ -29,8 +30,7 @@ void setup()
   Mode[1] = new FrameFade{5};
   Mode[2] = new PixelRun{5};
   Mode[3] = new MultiFade{5, cont};
-
-
+  Mode[4] = new MultiFrame{5, cont};
 
   Mode[modi]->setSpeed(255);
 
