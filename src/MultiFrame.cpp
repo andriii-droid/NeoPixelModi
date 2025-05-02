@@ -31,7 +31,9 @@ MultiFrame::MultiFrame(int initNumLed, const std::vector<int>& initGroups)
         SingleFrames[j] = new OneFrame{groups[j]};
     }
 
-    setColor(rand() % 256, rand() % 256, rand() % 256); //Sets the Color of the first Group to a random Color
+    int rgb[3];
+    createGoodRGB(rgb);
+    setColor(rgb[0], rgb[1], rgb[2]); //Sets the Color of the first Group to a random Color
 }
 
 MultiFrame::~MultiFrame()

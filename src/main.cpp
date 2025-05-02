@@ -31,7 +31,7 @@ void setup()
   Mode[3] = new MultiFade{5, cont};
   Mode[4] = new MultiFrame{5, cont};
 
-  Mode[modi]->setSpeed(255);
+  Mode[modi]->setSpeed(200);
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
@@ -43,9 +43,12 @@ void loop()
 {
   b1.updateButton();
 
+  int rgb[3];
+
   if (b1.getState(b1.time))
   {
-    Mode[modi]->setColor(rand() % 256, rand() % 256, rand() % 256);
+    Mode[modi]->createGoodRGB(rgb);
+    Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
   }
 
  if (b1.getState(b1.click))

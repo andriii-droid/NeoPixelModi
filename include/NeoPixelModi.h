@@ -62,6 +62,9 @@
             int getNumModi() const { return numModi; }
             //Returns Number of Modis
 
+            void createGoodRGB(int* rgb);
+            //Creates a pregnant rgb color
+
             virtual void run() = 0;
             //Runs Algorythm in Subclass
 

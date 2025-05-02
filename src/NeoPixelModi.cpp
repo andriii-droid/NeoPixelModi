@@ -4,6 +4,10 @@
 #include <Arduino.h>
 #include <NeoPixelModi.h>
 
+#include <algorithm> // for std::shuffle
+#include <random>    // for random engine
+#include <chrono>    // for seed
+
 NeoPixelModi::NeoPixelModi(int initNumLed) //Ctor
     : numLed{initNumLed}
 {
@@ -54,6 +58,18 @@ void NeoPixelModi::setLed(int numLed, int newRed, int newGreen, int newBlue)
     red[numLed] = newRed; 
     green[numLed] = newGreen;
     blue[numLed] = newBlue;
+}
+
+void NeoPixelModi::createGoodRGB(int* rgb)
+{
+    std::array<int, 3> numbers = {0, 1, 2};
+
+    unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(numbers.begin(), numbers.end(), std::default_random_engine(seed));
+
+    rgb[numbers[0]] = 156 + rand() % 100;
+    rgb[numbers[1]] = rand() % 157;
+    rgb[numbers[0]] = 0;  
 }
 
 
