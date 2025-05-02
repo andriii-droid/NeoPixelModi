@@ -2,6 +2,7 @@
 #include <OneFrame.h>
 #include <FrameFade.h>
 #include <PixelRun.h>
+#include <FadeIn.h>
 #include <MultiFade.h>
 #include <MultiFrame.h>
 #include <Button.h>
