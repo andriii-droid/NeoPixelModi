@@ -50,7 +50,6 @@ void NeoPixelModi::setCanvas(int newRed, int newGreen, int newBlue)
     {
         setLed(i, newRed, newGreen, newBlue);
     }
-    
 }
 
 void NeoPixelModi::setLed(int numLed, int newRed, int newGreen, int newBlue)
@@ -71,7 +70,3 @@ void NeoPixelModi::createGoodRGB(int* rgb)
     rgb[numbers[1]] = rand() % 157;
     rgb[numbers[0]] = 0;  
 }
-
-
-
-
