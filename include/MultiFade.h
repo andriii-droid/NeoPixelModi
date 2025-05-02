@@ -1,12 +1,9 @@
-//Datei: MultiFrame.h
+//Datei: MultiFade.h
 //Headerdatei für die SubKlasse MultiFade
 //Autor: Andri Andermatt, 27.04.2025
 #include <Arduino.h>
 #include <FrameFade.h>
-#include <NeoPixelModi.h>
 #include <vector>
-
-
 
 #ifndef MULTIFADE_H_
 #define MULTIFADE_H_
