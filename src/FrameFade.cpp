@@ -6,9 +6,7 @@
 
 FrameFade::FrameFade(int initNumLed) :
 NeoPixelModi{initNumLed}
-{
-
-}
+{}
 
 void FrameFade::run()
 {   

@@ -77,6 +77,10 @@
             int speed = 255;   //Von 0-255 0 = langsam, 255 = schnell
             int brightness = 255;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
+            //calculateSpeed()
+            int count = 1;
+            int countLast = 0;
+
             int numModi = 4; //Number of available NeopixelModis
 
             int calculateBrightness(int pixel) 

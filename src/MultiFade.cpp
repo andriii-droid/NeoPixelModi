@@ -30,7 +30,6 @@ MultiFade::MultiFade(int initNumLed, const std::vector<int>& initGroups)
     {
         SingleFades[j] = new FrameFade{groups[j]};
         SingleFades[j]->setColor(rand() % 256, rand() % 256, rand() % 256); //TODO
-        SingleFades[j]->setSpeed(5); //TODO
     }
 }
 
@@ -46,25 +45,21 @@ MultiFade::~MultiFade()
 
 void MultiFade::run()
 {
-    int done = 0;
-
-    for (size_t i = 0; i < groups.size(); i++)
+    if (calculateSpeed(1))
     {
-        SingleFades[i]->run();
+        int done = 0;
 
-        for (size_t j = done; j < done + groups[i]; j++)
+        for (size_t i = 0; i < groups.size(); i++)
         {
-            setLed(j, SingleFades[i]->getRed(0), SingleFades[i]->getGreen(0), SingleFades[i]->getBlue(0));
+            SingleFades[i]->run();
+
+            for (size_t j = done; j < done + groups[i]; j++)
+            {
+                setLed(j, SingleFades[i]->getRed(0), SingleFades[i]->getGreen(0), SingleFades[i]->getBlue(0));
+            }
+
+            done += groups[i];
         }
-
-        done += groups[i];
-
-        // Serial.print("red: ");
-        // Serial.println(SingleFades[i]->getRed(0));
-        // Serial.print("green: ");
-        // Serial.println(SingleFades[i]->getGreen(0));
-        // Serial.print("blue: ");
-        // Serial.println(SingleFades[i]->getBlue(0));
     }
 }
 

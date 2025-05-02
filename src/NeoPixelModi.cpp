@@ -26,10 +26,7 @@ bool NeoPixelModi::calculateSpeed(int amplifier)
 {
     int speedDiv = map(speed, 0, 255, amplifier*100, 1);
 
-    static int count = 1;
     ++count;
-
-    static int countLast = 0;
 
     int countDiv = count / speedDiv;
 
