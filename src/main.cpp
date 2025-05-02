@@ -13,7 +13,6 @@ Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 int constexpr maxModi = 5;
 std::vector<int> cont = {1,1,1,1,1};
 
-
 int modi = 0;
 int modiLast = 0;
 NeoPixelModi* Mode[maxModi];
@@ -48,7 +47,6 @@ void loop()
   {
     Mode[modi]->setColor(rand() % 256, rand() % 256, rand() % 256);
   }
-  
 
  if (b1.getState(b1.click))
  {
