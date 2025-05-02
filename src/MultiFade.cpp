@@ -66,5 +66,19 @@ void MultiFade::run()
 
 void MultiFade::setColor(int newRed, int newGreen, int newBlue)
 {
-    
+    if (!((newRed == 255 || newGreen == 255 || newBlue == 255) && 
+    (newRed == 0 || newGreen == 0 || newBlue == 0)))
+    {
+        correctValues(newRed, newGreen, newBlue);
+    }
+
+    red = newRed;
+    green = newGreen;
+    blue = newBlue;     
+
+    for (size_t i = 0; i < groups.size(); i++)
+    {
+        shiftValues(i, red, green, blue);
+        SingleFades[i]->setColor(red, green, blue);
+    }
 }

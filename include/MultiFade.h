@@ -29,5 +29,11 @@
         FrameFade** SingleFades;
 
         std::vector<int> groups;
+
+        int red = 0;
+        int green = 0;
+        int blue = 0;
+
+        void shiftValues(int index, int& wRed, int& wGreen, int& wBlue);
     };
 #endif //MULTIFADE_H_
