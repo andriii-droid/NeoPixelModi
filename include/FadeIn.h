@@ -24,7 +24,8 @@
     //Sets the lowest Value to 0, the highest to 255
 
     private:
-        enum fadeState {determine, redPlus, greenPlus, bluePlus, redMinus, greenMinus, blueMinus};
+        enum fadeState {determine, redPlus, redMinus, greenPlus, greenMinus, bluePlus, blueMinus, 
+            redGreenPlus, redGreenMinus, greenBluePlus, greenBlueMinus, blueRedPlus, blueRedMinus};
         fadeState state = determine;
         int count = 0;  
 

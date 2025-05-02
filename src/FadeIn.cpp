@@ -40,38 +40,63 @@ void FadeIn::run()
     
         case redPlus:
             setCanvas(count, getGreen(0), getBlue(0));
-            if (count == 255) { state = blueMinus; }
-    
-            break;
-    
-        case blueMinus:
-            setCanvas(getRed(0), getGreen(0), 255 - count);
-            if (count == 255) { state = greenPlus; }
-    
-            break;
-    
-        case greenPlus:
-            setCanvas(getRed(0), count, getBlue(0));
             if (count == 255) { state = redMinus; }
     
             break;
-    
         case redMinus:
             setCanvas(255 - count, getGreen(0), getBlue(0));
-            if (count == 255) { state = bluePlus; }
-    
+            if (count == 255) { state = redGreenPlus; }
+
             break;
-    
-        case bluePlus:
-            setCanvas(getRed(0), getGreen(0), count);
+        case redGreenPlus:
+            setCanvas(count, count, getBlue(0));
+            if (count == 255) { state = redGreenMinus; }
+
+            break;
+        case redGreenMinus:
+            setCanvas(255 - count, 255 - count, getBlue(0));
+            if (count == 255) { state = greenPlus; }
+
+            break;
+        case greenPlus:
+            setCanvas(getRed(0), count, getBlue(0));
             if (count == 255) { state = greenMinus; }
     
             break;
-    
         case greenMinus:
             setCanvas(getRed(0), 255 -count, getBlue(0));
-            if (count == 255) { state = redPlus; }
+            if (count == 255) { state = greenBluePlus; }
     
+            break;
+        case greenBluePlus:
+            setCanvas(getRed(0), count, count);
+            if (count == 255) { state = greenBlueMinus; }
+
+            break;
+        case greenBlueMinus:
+            setCanvas(getRed(0), 255 - count, 255 - count);
+            if (count == 255) { state = bluePlus; }
+        
+            break;
+        case bluePlus:
+            setCanvas(getRed(0), getGreen(0), count);
+            if (count == 255) { state = blueMinus; }
+    
+            break;
+        case blueMinus:
+            setCanvas(getRed(0), getGreen(0), 255 - count);
+            if (count == 255) { state = blueRedPlus; }
+    
+            break;
+        case blueRedPlus:
+            setCanvas(count, getGreen(0), count);
+            if (count == 255) { state = blueRedMinus; }
+
+            break;
+        case blueRedMinus:
+            setCanvas(255 - count, getGreen(0), 255 - count);
+            if (count == 255) { state = redPlus; }
+        
             break;
         }
         ++count;
@@ -82,8 +107,7 @@ void FadeIn::run()
 
 void FadeIn::setColor(int newRed, int newGreen, int newBlue)
 {
-    if (!((newRed == 255 || newGreen == 255 || newBlue == 255) && 
-        (newRed == 0 || newGreen == 0 || newBlue == 0)))
+    if (!(newRed == 0 || newGreen == 0 || newBlue == 0))
     {
         correctValues(newRed, newGreen, newBlue);
     }
