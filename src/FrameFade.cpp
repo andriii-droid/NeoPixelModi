@@ -11,9 +11,7 @@ NeoPixelModi{initNumLed}
 }
 
 void FrameFade::run()
-{  
-    static int count = 0;  
-    
+{   
     if (calculateSpeed(1))
     {
         switch (state)
