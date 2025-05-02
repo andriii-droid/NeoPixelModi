@@ -1,7 +1,7 @@
 TODO
 
 Colors in Subclasses persistent??
-Write/Read Colors, Brightness and Speed to/from a file
+Write/Read Colors, Brightness and Speed to/from a file - nope
 
 FrameFade.cpp
 Init from given Color via setColor() - done
@@ -11,9 +11,13 @@ transfer Brightness and Speed when Modi changes in main.cpp - done
 
 Variable with number of diffrent modis - done
 
-Modi ContinentFade
+Modi ContinentFade - done
 Array with continentleds in ctor
 Many FrameFades with diffrrent starting positions
 Brightness and Speed are still global for the whole object and 
 just scale the differences of the different local parameters of the diffrent Groups
+
+FadeIn - done
+
+MultiFadeIn - TODO
 
