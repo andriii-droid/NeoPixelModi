@@ -18,6 +18,7 @@ int modiLast = 0;
 NeoPixelModi* Mode[maxModi];
 
 Button b1{15};
+Button b2{14};
 
 void setup() 
 {
@@ -42,10 +43,12 @@ void setup()
 void loop() 
 {
   b1.updateButton();
+  b2.updateButton();
+
 
   int rgb[3];
 
-  if (b1.getState(b1.time))
+  if (b2.getState(b2.click))
   {
     Mode[modi]->createGoodRGB(rgb);
     Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
