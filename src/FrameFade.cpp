@@ -37,7 +37,7 @@ void FrameFade::run()
 
             break;
 
-        case init:  //TODO decide how to count up, and where to start the fading(state)
+        case init:  
             setCanvas(count, getGreen(0), getBlue(0));
             if (count == 255) { state = greenPlus; }
 

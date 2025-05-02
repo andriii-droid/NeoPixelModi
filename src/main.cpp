@@ -32,7 +32,7 @@ void setup()
 
 
 
-  Mode[modi]->setSpeed(5);
+  Mode[modi]->setSpeed(255);
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
