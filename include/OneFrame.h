@@ -22,6 +22,6 @@
     private:
         int red = 0;
         int green = 0;
-        int blue = 255;
+        int blue = 0;
     };
 #endif //ONEFRAME_H_

@@ -31,19 +31,10 @@ void FrameFade::run()
             {
                 if (red == 0) { state = greenMinus; }
                 else { state = redPlus; }            
-            } else
-            {
-                state = init;
-            }
-
+            } 
+        
             setLed(0, red, green, blue);
             count = 0;
-
-            break;
-
-        case init:  
-            setCanvas(count, getGreen(0), getBlue(0));
-            if (count == 255) { state = greenPlus; }
 
             break;
     
