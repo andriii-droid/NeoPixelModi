@@ -34,6 +34,6 @@
         int green = 0;
         int blue = 0;
 
-        void shiftValues(int index, int& wRed, int& wGreen, int& wBlue);
+        void shiftValues(int index, int one, int two, int three);
     };
 #endif //MULTIFADE_H_

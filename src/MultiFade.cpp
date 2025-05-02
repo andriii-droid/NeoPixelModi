@@ -29,9 +29,9 @@ MultiFade::MultiFade(int initNumLed, const std::vector<int>& initGroups)
     for (size_t j = 0; j < groups.size(); j++)  //Creates Array with multiple FrameFade Objects, one for each Group
     {
         SingleFades[j] = new FrameFade{groups[j]};
-        SingleFades[j]->setColor(rand() % 256, rand() % 256, rand() % 256); //TODO
         SingleFades[j]->setSpeed(rand() % 256); //Sets for each Group a random subSpeed The Globalspeed is applied on Top
     }
+    setColor(rand() % 256, rand() % 256, rand() % 256); //Sets the Color of the first Group to a random Color
 }
 
 MultiFade::~MultiFade()
@@ -80,5 +80,27 @@ void MultiFade::setColor(int newRed, int newGreen, int newBlue)
     {
         shiftValues(i, red, green, blue);
         SingleFades[i]->setColor(red, green, blue);
+    }
+}
+
+void MultiFade::shiftValues(int index, int one, int two, int three)
+{
+    switch (index)
+    {
+    case 1:
+    case 2:
+    case 4:
+    case 5:
+        red = three;
+        green = one;
+        blue = two;
+
+        break;
+    case 3:
+        red = three;
+        green = two;
+        blue = one;
+
+        break;
     }
 }
