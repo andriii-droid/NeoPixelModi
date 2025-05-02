@@ -21,9 +21,6 @@
     void setColor(int newRed, int newGreen, int newBlue) override;
     //Sets the Color
 
-    virtual void correctValues(int& wRed, int& wGreen, int& wBlue);
-    //Sets the lowest Value to 0, the highest to 255
-
     private:
         enum fadeState {determine, init, redPlus, greenPlus, bluePlus, redMinus, greenMinus, blueMinus};
         fadeState state = determine;
@@ -32,5 +29,8 @@
         int red = 0;
         int green = 0;
         int blue = 0;
+
+        void correctValues(int& wRed, int& wGreen, int& wBlue);
+        //Sets the lowest Value to 0, the highest to 255
     };
 #endif //FRAMEFADE_H_
