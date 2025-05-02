@@ -11,7 +11,7 @@
 
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
-int constexpr maxModi = 5;
+int constexpr maxModi = 6;
 std::vector<int> cont = {1,1,1,1,1};
 
 int modi = 0;
@@ -32,6 +32,8 @@ void setup()
   Mode[2] = new PixelRun{5};
   Mode[3] = new MultiFade{5, cont};
   Mode[4] = new MultiFrame{5, cont};
+  Mode[5] = new FadeIn{5};
+
 
   Mode[modi]->setSpeed(200);
 
