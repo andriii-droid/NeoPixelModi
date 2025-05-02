@@ -107,11 +107,8 @@ void FadeIn::run()
 
 void FadeIn::setColor(int newRed, int newGreen, int newBlue)
 {
-    if (!(newRed == 0 || newGreen == 0 || newBlue == 0))
-    {
-        correctValues(newRed, newGreen, newBlue);
-    }
-
+    correctValues(newRed, newGreen, newBlue);
+    
     red = newRed;
     green = newGreen;
     blue = newBlue;     
@@ -119,14 +116,38 @@ void FadeIn::setColor(int newRed, int newGreen, int newBlue)
     state = determine;
 }
 
-void FadeIn::correctValues(int& wRed, int& wGreen, int& wBlue) {
-    // Find and set the smallest
-    if (wRed <= wGreen && wRed <= wBlue) { wRed = 0; }
-    else if (wGreen <= wRed && wGreen <= wBlue) { wGreen = 0; }
-    else { wBlue = 0; }
-
-    // Find and set the largest
-    if (wRed >= wGreen && wRed >= wBlue) { wRed = 255; }
-    else if (wGreen >= wRed && wGreen >= wBlue) { wGreen = 255; }
-    else { wBlue = 255; }
+void FadeIn::correctValues(int& wRed, int& wGreen, int& wBlue) 
+{ 
+    //Find and set the smallest
+    if (wRed <= wGreen && wRed <= wBlue) 
+    {
+        wRed = 0; 
+        if (wBlue >= wGreen)
+        {
+            wBlue = wGreen;
+        } else
+        {
+            wGreen = wBlue;
+        }
+    } else if (wGreen <= wRed && wGreen <= wBlue) 
+    { 
+        wGreen = 0; 
+        if (wBlue >= wRed)
+        {
+            wBlue = wRed;
+        } else
+        {
+            wRed = wBlue;
+        }
+    } else 
+    { 
+        wBlue = 0; 
+        if (wGreen >= wRed)
+        {
+            wGreen = wRed;
+        } else
+        {
+            wRed = wGreen;
+        }
+    }
 }
