@@ -21,6 +21,9 @@ NeoPixelModi* Mode[maxModi];
 Button b1{15};
 Button b2{14};
 
+void vTaskNeoPixel(void *pvParameters);
+void vTaskButton(void *pvParameters);
+
 void setup() 
 {
   Serial.begin(9600);
@@ -37,6 +40,24 @@ void setup()
 
   Mode[modi]->setSpeed(200);
 
+  xTaskCreate(
+    vTaskButton,
+    "Button",
+    80000,
+    NULL,
+    1, 
+    NULL
+  );
+
+  xTaskCreate(
+    vTaskNeoPixel,
+    "NeoPixel",
+    80000,
+    NULL,
+    1, 
+    NULL
+  );
+
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(100);
@@ -45,41 +66,55 @@ void setup()
 
 void loop() 
 {
-  b1.updateButton();
-  b2.updateButton();
+}
 
-
-  int rgb[3];
-
-  if (b2.getState(b2.click))
+void vTaskButton(void *pvParameters)
+{
+  while (true)
   {
-    Mode[modi]->createGoodRGB(rgb);
-    Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
-  }
-
- if (b1.getState(b1.click))
- {
-    ++modi;
-    if (modi == maxModi)
+    b1.updateButton();
+    b2.updateButton();
+  
+    int rgb[3];
+  
+    if (b2.getState(b2.click))
     {
-      modi = 0;
+      Mode[modi]->createGoodRGB(rgb);
+      Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
     }
- }
-
- if (modi != modiLast)
- {
-    Mode[modi]->setBrightness(Mode[modiLast]->getBrightness());
-    Mode[modi]->setSpeed(Mode[modiLast]->getSpeed());
-
-    modiLast = modi;
- }
- 
-  Mode[modi]->run();
-
-  for (size_t i = 0; i < numLeds; i++)
-  {
-    strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
+  
+   if (b1.getState(b1.click))
+   {
+      ++modi;
+      if (modi == maxModi)
+      {
+        modi = 0;
+      }
+   }
   }
+  
+}
 
-  strip.show();
+void vTaskNeoPixel(void *pvParameters)
+{
+  while (true)
+  {
+    if (modi != modiLast)
+    {
+       Mode[modi]->setBrightness(Mode[modiLast]->getBrightness());
+       Mode[modi]->setSpeed(Mode[modiLast]->getSpeed());
+   
+       modiLast = modi;
+    }
+    
+     Mode[modi]->run();
+   
+     for (size_t i = 0; i < numLeds; i++)
+     {
+       strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
+     }
+   
+    strip.show();
+  }
+  
 }
