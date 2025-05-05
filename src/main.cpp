@@ -9,6 +9,8 @@
 #include <Adafruit_NeoPixel.h>
 #include <vector>
 
+portMUX_TYPE stripMux = portMUX_INITIALIZER_UNLOCKED;
+
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 int constexpr maxModi = 6;
@@ -26,7 +28,7 @@ void vTaskButton(void *pvParameters);
 
 void setup() 
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   strip.begin();
   strip.clear();
 
@@ -40,32 +42,40 @@ void setup()
 
   Mode[modi]->setSpeed(200);
 
-  xTaskCreate(
+  if (xTaskCreate(
     vTaskButton,
     "Button",
-    80000,
+    512,
     NULL,
     1, 
     NULL
-  );
+  ) != pdPASS)
+  {
+    Serial.println("Button Task failed to create");
+  }
 
-  xTaskCreate(
+  if (xTaskCreate(
     vTaskNeoPixel,
     "NeoPixel",
-    80000,
+    512,
     NULL,
     1, 
     NULL
-  );
+  ) != pdPASS)
+  {
+    Serial.println("NeoPixel Task failed to create");
+  }
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(100);
+  delay(1000);
+  Serial.println("Setup complete");
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop() 
 {
+  Serial.println("loop");
 }
 
 void vTaskButton(void *pvParameters)
@@ -83,16 +93,16 @@ void vTaskButton(void *pvParameters)
       Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
     }
   
-   if (b1.getState(b1.click))
-   {
+    if (b1.getState(b1.click))
+    {
       ++modi;
       if (modi == maxModi)
       {
         modi = 0;
       }
-   }
+    }
+    vTaskDelay(pdMS_TO_TICKS(10));
   }
-  
 }
 
 void vTaskNeoPixel(void *pvParameters)
@@ -101,20 +111,23 @@ void vTaskNeoPixel(void *pvParameters)
   {
     if (modi != modiLast)
     {
-       Mode[modi]->setBrightness(Mode[modiLast]->getBrightness());
-       Mode[modi]->setSpeed(Mode[modiLast]->getSpeed());
+      Mode[modi]->setBrightness(Mode[modiLast]->getBrightness());
+      Mode[modi]->setSpeed(Mode[modiLast]->getSpeed());
    
-       modiLast = modi;
+      modiLast = modi;
     }
     
-     Mode[modi]->run();
+    Mode[modi]->run();
    
-     for (size_t i = 0; i < numLeds; i++)
-     {
-       strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
-     }
+    for (size_t i = 0; i < numLeds; i++)
+    {
+      strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
+    }
    
+    portENTER_CRITICAL(&stripMux);
     strip.show();
+    portEXIT_CRITICAL(&stripMux);
+
+    vTaskDelay(pdMS_TO_TICKS(10)); 
   }
-  
 }
