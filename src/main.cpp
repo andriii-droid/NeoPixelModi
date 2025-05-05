@@ -38,7 +38,7 @@ void setup()
   Mode[5] = new FadeIn{5};
 
 
-  Mode[modi]->setSpeed(255);
+  Mode[modi]->setSpeed(0);
 
   if (xTaskCreate(
     vTaskButton,

@@ -26,7 +26,7 @@
             int getG(int numLed)  { return calculateBrightness(green[numLed]); }
             int getB(int numLed)  { return calculateBrightness(blue[numLed]); }
 
-            bool calculateSpeed(int amplifier);
+            bool calculateSpeed(int lowAmplifier, int highAmplifier);
             //Calculates the Speed a Mode Class is run
 
             void setCanvas(int newRed, int newGreen, int newBlue);
@@ -37,7 +37,7 @@
 
             void setSpeed(int newSpeed) 
             { 
-                if (newSpeed > 0 && newSpeed <= 255)
+                if (newSpeed >= 0 && newSpeed <= 255)
                 {
                     speed = newSpeed; 
                 }
@@ -81,7 +81,7 @@
             int brightness = 255;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
             //calculateSpeed()
-            int count = 1;
+            int countCycle = 0;
             int countLast = 0;
 
             int numModi = 6; //Number of available NeopixelModis

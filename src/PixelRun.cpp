@@ -14,7 +14,7 @@ NeoPixelModi{initNumLed}
 
 void PixelRun::run()
 {
-    if (calculateSpeed(6))
+    if (calculateSpeed(1500, 1000))
     {
         static int count = 0;
 

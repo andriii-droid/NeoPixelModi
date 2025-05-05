@@ -49,7 +49,7 @@ MultiFade::~MultiFade()
 
 void MultiFade::run()
 {
-    if (calculateSpeed(1))
+    if (calculateSpeed(5,1))
     {
         int done = 0;
 

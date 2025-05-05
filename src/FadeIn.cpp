@@ -14,7 +14,7 @@ NeoPixelModi{initNumLed}
 
 void FadeIn::run()
 {   
-    if (calculateSpeed(1))
+    if (calculateSpeed(1000, 200))
     {
         switch (state)
         {

@@ -23,20 +23,17 @@ NeoPixelModi::~NeoPixelModi() //Dtor
     delete[] red;
     delete[] green;
     delete[] blue;
-    //TODO save current Color config somewhere to initialise the new object with those values
 }
 
-bool NeoPixelModi::calculateSpeed(int amplifier)
+bool NeoPixelModi::calculateSpeed(int lowSpeedAmplifier, int highSpeedAmplifier)
 {
-    int speedDiv = map(speed, 0, 255, amplifier*100, 1);
+    int speedDiv = map(speed, 0, 255, 10*lowSpeedAmplifier, 1*highSpeedAmplifier);
 
-    ++count;
+    ++countCycle;
 
-    int countDiv = count / speedDiv;
-
-    if (countDiv != countLast)
+    if (countCycle >= speedDiv)
     {
-        countLast = countDiv;
+        countCycle = 0;
         return true;
     } else
     {
