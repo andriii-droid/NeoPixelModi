@@ -81,8 +81,7 @@
             int brightness = 255;  //Von 0-255 0 = dunkel(aus), 255 = hell
 
             //calculateSpeed()
-            int countCycle = 0;
-            int countLast = 0;
+            int countCycle = 200000;
 
             int numModi = 6; //Number of available NeopixelModis
 
