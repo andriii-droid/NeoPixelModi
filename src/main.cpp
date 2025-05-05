@@ -9,8 +9,6 @@
 #include <Adafruit_NeoPixel.h>
 #include <vector>
 
-portMUX_TYPE stripMux = portMUX_INITIALIZER_UNLOCKED;
-
 constexpr int numLeds = 5;
 Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
 int constexpr maxModi = 6;
@@ -40,7 +38,7 @@ void setup()
   Mode[5] = new FadeIn{5};
 
 
-  Mode[modi]->setSpeed(200);
+  Mode[modi]->setSpeed(255);
 
   if (xTaskCreate(
     vTaskButton,
@@ -75,7 +73,7 @@ void setup()
 
 void loop() 
 {
-  Serial.println("loop");
+  strip.show();
 }
 
 void vTaskButton(void *pvParameters)
@@ -101,7 +99,6 @@ void vTaskButton(void *pvParameters)
         modi = 0;
       }
     }
-    vTaskDelay(pdMS_TO_TICKS(10));
   }
 }
 
@@ -123,11 +120,5 @@ void vTaskNeoPixel(void *pvParameters)
     {
       strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
     }
-   
-    portENTER_CRITICAL(&stripMux);
-    strip.show();
-    portEXIT_CRITICAL(&stripMux);
-
-    vTaskDelay(pdMS_TO_TICKS(10)); 
   }
 }
