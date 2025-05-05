@@ -33,6 +33,8 @@ void FadeIn::run()
                 count = red;               
             } 
         
+            setCanvas(red, green, blue);
+
             break;
     
         case redPlus:
