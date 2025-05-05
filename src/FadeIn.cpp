@@ -22,17 +22,17 @@ void FadeIn::run()
             if (red == 0)
             {
               state = greenBluePlus;
+              count = green;               
             } else if (green == 0)
             {
-                state = blueRedPlus;           
+                state = blueRedPlus;   
+                count = blue;                       
             } else if (blue == 0)
             {
-                state = redGreenPlus;                 
+                state = redGreenPlus;  
+                count = red;               
             } 
         
-            setLed(0, red, green, blue);
-            count = 0;
-
             break;
     
         case redPlus:
@@ -61,7 +61,7 @@ void FadeIn::run()
     
             break;
         case greenMinus:
-            setCanvas(getRed(0), 255 -count, getBlue(0));
+            setCanvas(getRed(0), 255 - count, getBlue(0));
             if (count == 255) { state = greenBluePlus; }
     
             break;
