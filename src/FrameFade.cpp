@@ -21,21 +21,48 @@ void FrameFade::run()
         case determine:
             if (red == 255)
             {
-                if (green == 0) { state = blueMinus; }
-                else { state = greenPlus; }
+                if (green == 0) 
+                { 
+                    state = blueMinus; 
+                    count = 255 - blue;
+                    setCanvas(red, green, count);
+                }
+                else 
+                {
+                    state = greenPlus; 
+                    count = green;
+                    setCanvas(red, count, blue);
+                }
             } else if (green == 255)
             {
-                if (blue == 0) { state = redMinus; }
-                else { state = bluePlus; }            
+                if (blue == 0) 
+                { 
+                    state = redMinus; 
+                    count = 255 - red;
+                    setCanvas(count, green, blue);
+                }
+                else 
+                { 
+                    state = bluePlus; 
+                    count = blue;
+                    setCanvas(red, green, count);
+                }            
             } else if (blue == 255)
             {
-                if (red == 0) { state = greenMinus; }
-                else { state = redPlus; }            
+                if (red == 0) 
+                {
+                    state = greenMinus; 
+                    count = 255 - green;
+                    setCanvas(red, count, blue);
+                }
+                else 
+                { 
+                    state = redPlus; 
+                    count = red;
+                    setCanvas(count, green, blue);
+                }            
             } 
-        
-            setLed(0, red, green, blue);
-            count = 0;
-
+            
             break;
     
         case redPlus:
