@@ -12,12 +12,13 @@ transfer Brightness and Speed when Modi changes in main.cpp - done
 Variable with number of diffrent modis - done
 
 Modi ContinentFade - done
-Array with continentleds in ctor
-Many FrameFades with diffrrent starting positions
+Array with continentleds in ctor - done
+Many FrameFades with diffrrent starting positions - done
 Brightness and Speed are still global for the whole object and 
-just scale the differences of the different local parameters of the diffrent Groups
+just scale the differences of the different local parameters of the diffrent Groups - done
 
 FadeIn - done
 
 MultiFadeIn - TODO
+Many FadeIns with diffrent starting positions
 
