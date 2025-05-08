@@ -22,3 +22,4 @@ FadeIn - done
 MultiFadeIn - TODO
 Many FadeIns with diffrent starting positions
 
+Speed in Multi Classes is added.. would be better if it scattered araound origin value 
