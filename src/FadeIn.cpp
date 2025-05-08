@@ -117,7 +117,6 @@ void FadeIn::setColor(int newRed, int newGreen, int newBlue)
 
 void FadeIn::correctValues(int& wRed, int& wGreen, int& wBlue) 
 { 
-    //Find and set the smallest
     if (wRed <= wGreen && wRed <= wBlue) 
     {
         wRed = 0; 
