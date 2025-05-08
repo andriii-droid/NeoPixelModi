@@ -83,7 +83,7 @@
             //calculateSpeed()
             int countCycle = 200000;
 
-            int numModi = 6; //Number of available NeopixelModis
+            int numModi = 7; //Number of available NeopixelModis
 
             int calculateBrightness(int pixel) 
             { return map(pixel, 0, 255, 0, brightness); }
