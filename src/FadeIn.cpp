@@ -44,7 +44,7 @@ void FadeIn::run()
             break;
         case redMinus:
             setCanvas(255 - count, getGreen(0), getBlue(0));
-            if (count == 255) { state = redGreenPlus; }
+            if (count == 255) { state = randFadeState(redPlus); }
 
             break;
         case redGreenPlus:
@@ -54,7 +54,7 @@ void FadeIn::run()
             break;
         case redGreenMinus:
             setCanvas(255 - count, 255 - count, getBlue(0));
-            if (count == 255) { state = greenPlus; }
+            if (count == 255) { state = randFadeState(redGreenPlus); }
 
             break;
         case greenPlus:
@@ -64,7 +64,7 @@ void FadeIn::run()
             break;
         case greenMinus:
             setCanvas(getRed(0), 255 - count, getBlue(0));
-            if (count == 255) { state = greenBluePlus; }
+            if (count == 255) { state = randFadeState(greenPlus); }
     
             break;
         case greenBluePlus:
@@ -74,7 +74,7 @@ void FadeIn::run()
             break;
         case greenBlueMinus:
             setCanvas(getRed(0), 255 - count, 255 - count);
-            if (count == 255) { state = bluePlus; }
+            if (count == 255) { state = randFadeState(greenBluePlus); }
         
             break;
         case bluePlus:
@@ -84,7 +84,7 @@ void FadeIn::run()
             break;
         case blueMinus:
             setCanvas(getRed(0), getGreen(0), 255 - count);
-            if (count == 255) { state = blueRedPlus; }
+            if (count == 255) { state = randFadeState(bluePlus); }
     
             break;
         case blueRedPlus:
@@ -94,7 +94,7 @@ void FadeIn::run()
             break;
         case blueRedMinus:
             setCanvas(255 - count, getGreen(0), 255 - count);
-            if (count == 255) { state = redPlus; }
+            if (count == 255) { state = randFadeState(blueRedPlus); }
         
             break;
         }
@@ -148,4 +148,17 @@ void FadeIn::correctValues(int& wRed, int& wGreen, int& wBlue)
             wRed = wGreen;
         }
     }
+}
+
+FadeIn::fadeState FadeIn::randFadeState(fadeState current)
+{
+    int random = (rand() % 6) + 1;
+
+    random = random * 2 - 1;
+
+    if (current == fadeState(random))
+    {
+        if (random == 11) { return fadeState(1); } 
+        else { return fadeState(random + 2); }
+    } else { return fadeState(random); }
 }
