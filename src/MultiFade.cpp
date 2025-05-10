@@ -111,6 +111,6 @@ void MultiFade::setSpeed(int newSpeed)
     NeoPixelModi::setSpeed(newSpeed);
     for (size_t i = 0; i < groups.size(); i++)  
     {
-        SingleFades[i]->setSpeed(newSpeed);
+        SingleFades[i]->setSpeed(newSpeed + 10 - (rand() % 21));
     }
 }

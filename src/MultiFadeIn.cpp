@@ -107,6 +107,6 @@ void MultiFadeIn::setSpeed(int newSpeed)
     NeoPixelModi::setSpeed(newSpeed);
     for (size_t i = 0; i < groups.size(); i++)  
     {
-        SingleFadeIns[i]->setSpeed(newSpeed);
+        SingleFadeIns[i]->setSpeed(newSpeed + 10 - (rand() % 21));
     }
 }
