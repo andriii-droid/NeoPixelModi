@@ -29,8 +29,9 @@ MultiFadeIn::MultiFadeIn(int initNumLed, const std::vector<int>& initGroups)
     for (size_t j = 0; j < groups.size(); j++)  //Creates Array with multiple FadeIn Objects, one for each Group
     {
         SingleFadeIns[j] = new FadeIn{groups[j]};
-        SingleFadeIns[j]->setSpeed(156 + (rand() % 100)); //Sets for each Group a random subSpeed The Globalspeed is applied on Top
     }
+
+    setSpeed(getSpeed()); //Sets for each Group a random subSpeed The Globalspeed is applied on Top
 
     int rgb[3];
     createGoodRGB(rgb);
@@ -49,21 +50,18 @@ MultiFadeIn::~MultiFadeIn()
 
 void MultiFadeIn::run()
 {
-    if (calculateSpeed(5,1))
+    int done = 0;
+
+    for (size_t i = 0; i < groups.size(); i++)
     {
-        int done = 0;
+        SingleFadeIns[i]->run();
 
-        for (size_t i = 0; i < groups.size(); i++)
+        for (size_t j = done; j < done + groups[i]; j++)
         {
-            SingleFadeIns[i]->run();
-
-            for (size_t j = done; j < done + groups[i]; j++)
-            {
-                setLed(j, SingleFadeIns[i]->getRed(0), SingleFadeIns[i]->getGreen(0), SingleFadeIns[i]->getBlue(0));
-            }
-
-            done += groups[i];
+            setLed(j, SingleFadeIns[i]->getRed(0), SingleFadeIns[i]->getGreen(0), SingleFadeIns[i]->getBlue(0));
         }
+
+        done += groups[i];
     }
 }
 
@@ -101,5 +99,14 @@ void MultiFadeIn::shiftValues(int index, int one, int two, int three)
         blue = one;
 
         break;
+    }
+}
+
+void MultiFadeIn::setSpeed(int newSpeed)
+{
+    NeoPixelModi::setSpeed(newSpeed);
+    for (size_t i = 0; i < groups.size(); i++)  
+    {
+        SingleFadeIns[i]->setSpeed(newSpeed);
     }
 }

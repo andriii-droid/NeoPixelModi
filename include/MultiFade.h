@@ -22,6 +22,8 @@
         void setColor(int newRed, int newGreen, int newBlue) override;
         //Sets the Color
 
+        void setSpeed(int newSpeed) override;
+
         private:
         FrameFade** SingleFades;
 
@@ -33,4 +35,5 @@
 
         void shiftValues(int index, int one, int two, int three);
     };
+
 #endif //MULTIFADE_H_

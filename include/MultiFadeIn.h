@@ -22,6 +22,8 @@
         void setColor(int newRed, int newGreen, int newBlue) override;
         //Sets the Color
 
+        void setSpeed(int newSpeed) override;
+
         private:
         FadeIn** SingleFadeIns;
 

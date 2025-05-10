@@ -35,7 +35,7 @@
             void setLed(int numLed, int newRed, int newGreen, int newBlue);
             //Sets the specified Led to the specified Color
 
-            void setSpeed(int newSpeed) 
+            virtual void setSpeed(int newSpeed) 
             { 
                 if (newSpeed >= 0 && newSpeed <= 255)
                 {
