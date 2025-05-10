@@ -25,6 +25,9 @@ Button b2{14};
 void vTaskNeoPixel(void *pvParameters);
 void vTaskButton(void *pvParameters);
 
+int test = 0;
+
+
 void setup() 
 {
   Serial.begin(115200);
@@ -75,6 +78,22 @@ void setup()
 void loop() 
 {
   strip.show();
+
+  int rgbt[3];
+
+  if (test < 50)
+  {
+    test++;
+  
+    Mode[modi]->createGoodRGB(rgbt);
+    Serial.print("red: ");
+    Serial.println(rgbt[0]);
+    Serial.print("green: ");
+    Serial.println(rgbt[1]);
+    Serial.print("blue: ");
+    Serial.println(rgbt[2]);
+    Serial.println("");
+  }
 }
 
 void vTaskButton(void *pvParameters)

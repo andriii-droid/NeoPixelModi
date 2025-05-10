@@ -65,5 +65,5 @@ void NeoPixelModi::createGoodRGB(int* rgb)
 
     rgb[numbers[0]] = 156 + rand() % 100;
     rgb[numbers[1]] = rand() % 157;
-    rgb[numbers[0]] = 0;  
+    rgb[numbers[2]] = 0;  
 }
