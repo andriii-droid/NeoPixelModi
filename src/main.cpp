@@ -10,8 +10,8 @@
 #include <NeoPixelBus.h>
 #include <vector>
 
-constexpr int numLeds = 5;
-constexpr int dataPin = 4;
+constexpr uint16_t numLeds = 5;
+constexpr uint8_t dataPin = 4;
 NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt0800KbpsMethod> strip(numLeds, dataPin);
 
 int constexpr maxModi = 7;
@@ -28,7 +28,7 @@ void setup()
 {
   Serial.begin(115200);
   strip.Begin();
-  strip.Show();  // Initialize all LEDs to off
+  strip.Show();
 
   Mode[0] = new OneFrame{5};
   Mode[1] = new FrameFade{5};
@@ -40,16 +40,12 @@ void setup()
 
   Mode[modi]->setSpeed(255);
 
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
-  Serial.println("Setup complete");
-  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop() 
 { 
-  //Serial.println("loop");
+  Serial.println("loop");
     b1.updateButton();
     b2.updateButton();
   
@@ -79,7 +75,7 @@ void loop()
     
     Mode[modi]->run();
    
-    for (size_t i = 0; i < numLeds; i++)
+    for(size_t i = 0; i < numLeds; i++)
     {
       strip.SetPixelColor(i, RgbColor(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
     }
