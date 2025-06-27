@@ -7,11 +7,13 @@
 #include <MultiFrame.h>
 #include <MultiFadeIn.h>
 #include <Button.h>
-#include <Adafruit_NeoPixel.h>
+#include <FastLED.h>
 #include <vector>
 
 constexpr int numLeds = 5;
-Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
+constexpr int pinData = 8;
+
+CRGB leds[numLeds];
 int constexpr maxModi = 7;
 std::vector<int> cont = {2 ,1 ,2};
 
@@ -25,8 +27,8 @@ Button b2{14};
 void setup() 
 {
   Serial.begin(115200);
-  strip.begin();
-  strip.clear();
+
+  FastLED.addLeds<WS2812B, pinData, GRB>(leds, numLeds);
 
   Mode[0] = new OneFrame{5};
   Mode[1] = new FrameFade{5};
@@ -47,6 +49,7 @@ void setup()
 
 void loop() 
 { 
+    Serial.println("looping");
     b1.updateButton();
     b2.updateButton();
   
@@ -78,8 +81,8 @@ void loop()
    
     for (size_t i = 0; i < numLeds; i++)
     {
-      strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
+      leds[i] = CRGB(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i));
     }
 
-  strip.show();
+  FastLED.show();
 }
