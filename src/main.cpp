@@ -22,9 +22,6 @@ NeoPixelModi* Mode[maxModi];
 Button b1{15};
 Button b2{14};
 
-void vTaskNeoPixel(void *pvParameters);
-void vTaskButton(void *pvParameters);
-
 void setup() 
 {
   Serial.begin(115200);
@@ -41,30 +38,6 @@ void setup()
 
   Mode[modi]->setSpeed(255);
 
-  if (xTaskCreate(
-    vTaskButton,
-    "Button",
-    512,
-    NULL,
-    1, 
-    NULL
-  ) != pdPASS)
-  {
-    Serial.println("Button Task failed to create");
-  }
-
-  if (xTaskCreate(
-    vTaskNeoPixel,
-    "NeoPixel",
-    512,
-    NULL,
-    1, 
-    NULL
-  ) != pdPASS)
-  {
-    Serial.println("NeoPixel Task failed to create");
-  }
-
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
@@ -73,21 +46,13 @@ void setup()
 }
 
 void loop() 
-{
-  strip.show();
-}
-
-void vTaskButton(void *pvParameters)
-{
-  while (true)
-  {
+{ 
     b1.updateButton();
     b2.updateButton();
   
-    int rgb[3];
-  
     if (b2.getState(b2.click))
     {
+      int rgb[3];
       Mode[modi]->createGoodRGB(rgb);
       Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
     }
@@ -100,13 +65,7 @@ void vTaskButton(void *pvParameters)
         modi = 0;
       }
     }
-  }
-}
 
-void vTaskNeoPixel(void *pvParameters)
-{
-  while (true)
-  {
     if (modi != modiLast)
     {
       Mode[modi]->setBrightness(Mode[modiLast]->getBrightness());
@@ -121,5 +80,6 @@ void vTaskNeoPixel(void *pvParameters)
     {
       strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
     }
-  }
+
+  strip.show();
 }
