@@ -7,11 +7,13 @@
 #include <MultiFrame.h>
 #include <MultiFadeIn.h>
 #include <Button.h>
-#include <Adafruit_NeoPixel.h>
+#include <NeoPixelBus.h>
 #include <vector>
 
-constexpr int numLeds = 5;
-Adafruit_NeoPixel strip(numLeds, 8, NEO_GRB + NEO_KHZ800);
+constexpr uint16_t numLeds = 5;
+constexpr uint8_t dataPin = 4;
+NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt0800KbpsMethod> strip(numLeds, dataPin);
+
 int constexpr maxModi = 7;
 std::vector<int> cont = {2 ,1 ,2};
 
@@ -22,14 +24,11 @@ NeoPixelModi* Mode[maxModi];
 Button b1{15};
 Button b2{14};
 
-void vTaskNeoPixel(void *pvParameters);
-void vTaskButton(void *pvParameters);
-
 void setup() 
 {
   Serial.begin(115200);
-  strip.begin();
-  strip.clear();
+  strip.Begin();
+  strip.Show();
 
   Mode[0] = new OneFrame{5};
   Mode[1] = new FrameFade{5};
@@ -41,53 +40,19 @@ void setup()
 
   Mode[modi]->setSpeed(255);
 
-  if (xTaskCreate(
-    vTaskButton,
-    "Button",
-    512,
-    NULL,
-    1, 
-    NULL
-  ) != pdPASS)
-  {
-    Serial.println("Button Task failed to create");
-  }
-
-  if (xTaskCreate(
-    vTaskNeoPixel,
-    "NeoPixel",
-    512,
-    NULL,
-    1, 
-    NULL
-  ) != pdPASS)
-  {
-    Serial.println("NeoPixel Task failed to create");
-  }
-
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
-  Serial.println("Setup complete");
-  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop() 
-{
-  strip.show();
-}
-
-void vTaskButton(void *pvParameters)
-{
-  while (true)
-  {
+{ 
     b1.updateButton();
     b2.updateButton();
   
-    int rgb[3];
-  
     if (b2.getState(b2.click))
     {
+        Serial.println("loop");
+
+      int rgb[3];
       Mode[modi]->createGoodRGB(rgb);
       Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
     }
@@ -100,13 +65,7 @@ void vTaskButton(void *pvParameters)
         modi = 0;
       }
     }
-  }
-}
 
-void vTaskNeoPixel(void *pvParameters)
-{
-  while (true)
-  {
     if (modi != modiLast)
     {
       Mode[modi]->setBrightness(Mode[modiLast]->getBrightness());
@@ -117,9 +76,10 @@ void vTaskNeoPixel(void *pvParameters)
     
     Mode[modi]->run();
    
-    for (size_t i = 0; i < numLeds; i++)
+    for(size_t i = 0; i < numLeds; i++)
     {
-      strip.setPixelColor(i, strip.Color(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
+      strip.SetPixelColor(i, RgbColor(Mode[modi]->getR(i), Mode[modi]->getG(i), Mode[modi]->getB(i)));
     }
-  }
+
+  strip.Show();
 }

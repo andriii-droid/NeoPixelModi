@@ -1,0 +1,24 @@
+{
+    "name": "NeoPixelModi",
+    "version": "1.0.0",
+    "description": "Custom modifications for NeoPixel animations.",
+    "keywords": "led, neopixel, esp32",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andriii-droid/NeoPixelModi.git"
+    },
+    "authors": [
+        {
+            "name": "Andrii",
+            "maintainer": true
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "espressif32",
+    "build": {
+        "includeDir": "src"
+    },
+    "dependencies": {
+        "adafruit/Adafruit NeoPixel": "^1.15.4"
+    }
+}
