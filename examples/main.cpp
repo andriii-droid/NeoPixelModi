@@ -45,12 +45,13 @@ void setup()
 
 void loop() 
 { 
-  Serial.println("loop");
     b1.updateButton();
     b2.updateButton();
   
     if (b2.getState(b2.click))
     {
+        Serial.println("loop");
+
       int rgb[3];
       Mode[modi]->createGoodRGB(rgb);
       Mode[modi]->setColor(rgb[0], rgb[1], rgb[2]);
