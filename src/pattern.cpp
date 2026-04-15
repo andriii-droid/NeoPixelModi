@@ -56,3 +56,25 @@ void Pattern::setParameters() {
     patterns[modi]->setBrightness(patterns[modiLast]->getBrightness());
     patterns[modi]->setSpeed(patterns[modiLast]->getSpeed());
 }
+
+void Pattern::setColor(int r = 0, int g = 0, int b = 0) {
+    int rgb[3] = {r, g, b};
+    if ((r == 0) and (g == 0) and (b == 0)) {
+        createGoodRGB(rgb);
+        patterns[modi]->setColor(rgb[0], rgb[1], rgb[2]);
+    }
+
+
+}
+
+void Pattern::createGoodRGB(int *rgb)
+{
+    std::array<int, 3> numbers = {0, 1, 2};
+
+    unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(numbers.begin(), numbers.end(), std::default_random_engine(seed));
+
+    rgb[numbers[0]] = 156 + rand() % 100;
+    rgb[numbers[1]] = rand() % 157;
+    rgb[numbers[2]] = 0;
+}

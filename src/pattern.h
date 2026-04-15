@@ -7,6 +7,8 @@
 #include <MultiFrame.h>
 #include <MultiFadeIn.h>
 #include <Arduino.h>
+#include <chrono> // for seed
+#include <random> // for random engine
 
 #ifndef PATTERN_H_
 #define PATTERN_H_
@@ -22,10 +24,14 @@
             void setMode(int newMode);
 
             std::vector<int> getRGB(int index);
-            
-        
+
+            void setColor(int r = 0, int g = 0, int b = 0);
+
         private:
             void setParameters();
+
+            void createGoodRGB(int *rgb);
+            // Creates a pregnant rgb color
 
             int modi = 0;
             int modiLast = 0;
