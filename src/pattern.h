@@ -20,6 +20,8 @@
             void previousMode();
 
             void setMode(int newMode);
+
+            std::vector<int> getRGB(int index);
             
         
         private:
