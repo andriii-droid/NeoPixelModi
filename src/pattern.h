@@ -23,6 +23,8 @@
             
         
         private:
+            void setParameters();
+
             int modi = 0;
             int modiLast = 0;
             int numPattern = 0;

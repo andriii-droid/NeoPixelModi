@@ -22,6 +22,7 @@ void Pattern::nextMode() {
     if (modi == numPattern) {
         modi = 0;
     }
+    setParameters();
 }
 
 void Pattern::previousMode() {
@@ -32,11 +33,18 @@ void Pattern::previousMode() {
     {
         modi = numPattern - 1;
     }
+    setParameters();
 }
 
 void Pattern::setMode(int newMode) {
     if (newMode <= numPattern) {
         modiLast = modi;
         modi = newMode;
+        setParameters();
     }
+}
+
+void Pattern::setParameters() {
+    patterns[modi]->setBrightness(patterns[modiLast]->getBrightness());
+    patterns[modi]->setSpeed(patterns[modiLast]->getSpeed());
 }
