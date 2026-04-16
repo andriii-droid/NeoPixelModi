@@ -15,7 +15,7 @@
     class Pattern
     {
         public:
-            explicit Pattern(int numLed, std::vector<int> cont);
+            explicit Pattern(int numLed, std::vector<int> frame);
 
             void nextMode();
 
