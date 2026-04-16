@@ -48,6 +48,10 @@ void Pattern::setMode(int newMode) {
     }
 }
 
+void Pattern::run() {
+    patterns[modi]->run();
+}
+
 void Pattern::setParameters() {
     patterns[modi]->setBrightness(patterns[modiLast]->getBrightness());
     patterns[modi]->setSpeed(patterns[modiLast]->getSpeed());
