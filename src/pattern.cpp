@@ -57,7 +57,7 @@ void Pattern::setParameters() {
     patterns[modi]->setSpeed(patterns[modiLast]->getSpeed());
 }
 
-void Pattern::setColor(int r = 0, int g = 0, int b = 0) {
+void Pattern::setColor(int r, int g, int b) {
     int rgb[3] = {r, g, b};
     if ((r == 0) and (g == 0) and (b == 0)) {
         createGoodRGB(rgb);
