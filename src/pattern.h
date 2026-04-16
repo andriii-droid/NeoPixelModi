@@ -9,6 +9,7 @@
 #include <Arduino.h>
 #include <chrono> // for seed
 #include <random> // for random engine
+#include <NeoPixelBus.h>
 
 #ifndef PATTERN_H_
 #define PATTERN_H_
@@ -23,7 +24,7 @@
 
             void setMode(int newMode);
 
-            std::vector<int> getRGB(int index);
+            RgbColor getRGB(int index);
 
             void setColor(int r = 0, int g = 0, int b = 0);
 

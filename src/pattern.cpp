@@ -15,12 +15,8 @@ Pattern::Pattern(int numLed, std::vector<int> frame)
     patterns[modi]->setSpeed(255);
 }
 
-std::vector<int> Pattern::getRGB(int index) {
-    std::vector<int> rgb;
-    rgb.push_back(patterns[modi]->getR(index));
-    rgb.push_back(patterns[modi]->getG(index));
-    rgb.push_back(patterns[modi]->getB(index));
-    return rgb;
+RgbColor Pattern::getRGB(int index) {
+    return RgbColor(patterns[modi]->getR(index), patterns[modi]->getG(index), patterns[modi]->getB(index));
 }
 
 void Pattern::nextMode() {
