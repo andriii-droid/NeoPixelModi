@@ -8,11 +8,10 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/include",
                 "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/src",
+                "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/PubSubClient/src",
                 "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/NeoPixelBus/src",
                 "/Users/andri/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
-                "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/Button/include",
                 "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/Button/src",
                 "/Users/andri/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/include/newlib/platform_include",
                 "/Users/andri/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/include/freertos/include",
@@ -233,11 +232,10 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/include",
                     "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/src",
+                    "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/PubSubClient/src",
                     "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/NeoPixelBus/src",
                     "/Users/andri/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
-                    "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/Button/include",
                     "/Users/andri/Documents/Programmdaten/PlatformIO/Librarys/NeoPixelModi/.pio/libdeps/esp32-s2-saola-1/Button/src",
                     "/Users/andri/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/include/newlib/platform_include",
                     "/Users/andri/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/include/freertos/include",

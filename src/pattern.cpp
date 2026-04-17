@@ -63,8 +63,10 @@ void Pattern::setColor(int r, int g, int b) {
         createGoodRGB(rgb);
         patterns[modi]->setColor(rgb[0], rgb[1], rgb[2]);
     }
+}
 
-
+void Pattern::setBrightness(int value) {
+    patterns[modi]->setBrightness(value);
 }
 
 void Pattern::createGoodRGB(int *rgb)
